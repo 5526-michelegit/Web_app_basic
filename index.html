@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <!-- Meta essenziali per accessibilità e responsività -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Erotique Alternate – Esplorazione tipografica" />
+  <title>Erotique Alternate</title>
+
+  <!-- Collegamento al foglio di stile principale -->
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+
+  <!-- ========================================
+       NAVIGAZIONE PRINCIPALE (Menu a tendina)
+       Posizionata in alto a sinistra
+  ======================================== -->
+  <nav class="nav-principale" aria-label="Navigazione principale">
+
+    <!-- Pulsante che attiva/disattiva il menu a tendina -->
+    <button
+      class="nav-toggle"
+      id="navToggle"
+      aria-expanded="false"
+      aria-controls="menuTendina"
+      aria-label="Apri menu di navigazione"
+    >
+      <!-- Tre linee orizzontali (icona hamburger) -->
+      <span class="hamburger-linea"></span>
+      <span class="hamburger-linea"></span>
+      <span class="hamburger-linea"></span>
+    </button>
+
+    <!-- Menu a tendina con le voci di navigazione -->
+    <ul class="menu-tendina" id="menuTendina" role="menu">
+      <!-- Voce 1: Origine (per ora non collegata) -->
+      <li role="none">
+        <a href="pages/origine.html" class="menu-voce" role="menuitem" target="_blank" rel="noopener noreferrer">Origine</a>
+      </li>
+      <!-- Voce 2: Glifi (per ora non collegata) -->
+      <li role="none">
+        <a href="pages/glifi.html" class="menu-voce" role="menuitem" target="_blank" rel="noopener noreferrer">Glifi</a>
+      </li>
+      <!-- Voce 3: Applicazioni (per ora non collegata) -->
+      <li role="none">
+        <a href="pages/applicazioni.html" class="menu-voce" role="menuitem" target="_blank" rel="noopener noreferrer">Applicazioni</a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- ========================================
+       SEZIONE HERO – Immagine di sfondo statica
+       Occupa l'intera viewport
+  ======================================== -->
+  <main>
+    <section class="hero" aria-label="Home page Erotique Alternate">
+      <!-- L'immagine di sfondo è impostata via CSS -->
+      <!-- Testo alternativo per accessibilità tramite aria-label sulla sezione -->
+    </section>
+  </main>
+
+  <!-- Collegamento allo script JavaScript principale -->
+  <script src="./js/main.js"></script>
+
+</body>
+</html>

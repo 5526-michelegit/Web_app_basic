@@ -1,0 +1,129 @@
+/* ================================================
+   STYLE.CSS – Foglio di stile principale
+   Progetto: Erotique Alternate
+   Struttura:
+     1. Reset & variabili CSS
+     2. Stili globali
+     3. Navigazione e menu a tendina
+     4. Sezione Hero (sfondo)
+     5. Media queries (responsive)
+   ================================================ */
+
+
+/* ------------------------------------------------
+   1. RESET & VARIABILI CSS
+   ------------------------------------------------ */
+
+/* Reset di base per uniformità cross-browser */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Variabili CSS per coerenza grafica del sito */
+:root {
+  --colore-primario: #1a1a1a;       /* Testo scuro principale */
+  --colore-sfondo: #f5f0eb;         /* Sfondo chiaro caldo */
+  --colore-menu-bg: rgba(245, 240, 235, 0.97); /* Sfondo menu semi-opaco */
+  --colore-menu-hover: #1a1a1a;     /* Hover voci menu */
+  --colore-menu-testo: #1a1a1a;     /* Testo voci menu */
+  --colore-toggle-bg: rgba(245, 240, 235, 0.9); /* Sfondo pulsante toggle */
+  --font-principale: 'Georgia', 'Times New Roman', serif; /* Font tipografico */
+  --transizione: 0.3s ease;         /* Transizione standard */
+  --z-nav: 1000;                    /* Z-index navigazione */
+}
+
+
+/* ------------------------------------------------
+   2. STILI GLOBALI
+   ------------------------------------------------ */
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* Nessuno scroll sulla home – immagine full-screen */
+  font-family: var(--font-principale);
+  background-color: var(--colore-sfondo);
+  color: var(--colore-primario);
+}
+
+
+/* ------------------------------------------------
+   3. NAVIGAZIONE E MENU A TENDINA
+   ------------------------------------------------ */
+
+/* Contenitore della navigazione – posizionato in alto a sinistra */
+.nav-principale {
+  position: fixed;
+  top: 1.5rem;
+  left: 1.5rem;
+  z-index: var(--z-nav);
+}
+
+/* Pulsante hamburger */
+.nav-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  background-color: #0a0a0a;
+  border: 1px solid rgba(26, 26, 26, 0.2);
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 8px;
+  transition: background-color var(--transizione), border-color var(--transizione);
+  margin-top: 70px;
+}
+
+/* Effetto hover sul pulsante hamburger */
+.nav-toggle:hover {
+  background-color: var(--colore-primario);
+}
+
+/* Le tre linee dell'icona hamburger */
+.hamburger-linea {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background-color: var(--colore-primario);
+  border-radius: 2px;
+  transition: background-color var(--transizione), transform var(--transizione), opacity var(--transizione);
+  background-color: #ffffff;
+}
+
+/* Cambio colore delle linee al hover del pulsante */
+.nav-toggle:hover .hamburger-linea {
+  background-color: var(--colore-sfondo);
+}
+
+/* Animazione hamburger → X quando il menu è aperto */
+.nav-toggle[aria-expanded="true"] .hamburger-linea:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.nav-toggle[aria-expanded="true"] .hamburger-linea:nth-child(2) {  opacity: 0;  transform: scaleX(0);}.nav-toggle[aria-expanded="true"] .hamburger-linea:nth-child(3) {  transform: translateY(-7px) rotate(-45deg);
+}
+/* Menu a tendina – lista delle voci */.menu-tendina {  list-style: none;  background-color: var(--colore-menu-bg);  border: 1px solid rgba(26, 26, 26, 0.15);  border-radius: 4px;  margin-top: 0.5rem;  min-width: 160px;  padding: 0.5rem 0;  /* Stato iniziale: nascosto */  opacity: 0;  visibility: hidden;  transform: translateY(-10px);  transition:    opacity var(--transizione),    visibility var(--transizione),    transform var(--transizione);  /* Ombra sottile per profondità */  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+/* Stato aperto del menu – attivato da JavaScript */.menu-tendina.aperto {  opacity: 1;  visibility: visible;  transform: translateY(0);
+}
+/* Singola voce del menu */.menu-voce {  display: block;  padding: 0.65rem 1.25rem;  color: var(--colore-menu-testo);  text-decoration: none;  font-family: var(--font-principale);  font-size: 0.95rem;  letter-spacing: 0.05em;  transition: background-color var(--transizione), letter-spacing var(--transizione);
+}
+/* Effetto hover sulle voci del menu */.menu-voce:hover {  background-color: rgba(26, 26, 26, 0.06);  letter-spacing: 0.1em;}
+
+/* ------------------------------------------------   4. SEZIONE HERO – Sfondo immagine full-screen   ------------------------------------------------ */
+/* L'elemento main occupa tutta la viewport */main {  width: 100%;  height: 100%;}
+/* Sezione hero: immagine di sfondo statica, centrata e copertura totale */
+.hero {  width: 100%;  height: 100vh;            /* Altezza pari all'intera viewport */  background-image: url('/assets/erotique_home_page.png');  background-size: cover;   /* L'immagine copre l'intero contenitore */  background-position: center center; /* Centrata su entrambi gli assi */  background-repeat: no-repeat;       /* Nessuna ripetizione */  background-attachment: scroll;      /* Scorrimento normale (no parallax) */}
+
+
+/* ------------------------------------------------   5. MEDIA QUERIES – Design responsive   ------------------------------------------------ */
+/* Tablet (max-width: 768px) */@media (max-width: 768px) {  /* Pulsante leggermente più grande per touch */  .nav-toggle {    width: 48px;    height: 48px;  }
+  /* Voci menu più spaziose per touch */  .menu-voce {    padding: 0.75rem 1.25rem;    font-size: 1rem;  }
+}
+/* Mobile piccolo (max-width: 480px) */@media (max-width: 480px) {  /* Margine ridotto sui dispositivi piccoli */  .nav-principale {    top: 1rem;    left: 1rem;
+  }
+  /* Menu si estende di più in larghezza su mobile */  .menu-tendina {    min-width: 140px;  }}
