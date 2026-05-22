@@ -1,129 +1,320 @@
 /* ================================================
-   STYLE.CSS – Foglio di stile principale
-   Progetto: Erotique Alternate
-   Struttura:
-     1. Reset & variabili CSS
-     2. Stili globali
-     3. Navigazione e menu a tendina
-     4. Sezione Hero (sfondo)
-     5. Media queries (responsive)
-   ================================================ */
-
+ STYLE.CSS – Foglio di stile principale
+ Progetto: Erotique Alternate
+ ================================================ */
 
 /* ------------------------------------------------
-   1. RESET & VARIABILI CSS
-   ------------------------------------------------ */
+ GOOGLE FONTS IMPORT
+ Cormorant Garamond: peso 300 (Monoline)
+ Playfair Display: pesi 400 / 600 / 800
+ ------------------------------------------------ */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&display=swap');
 
-/* Reset di base per uniformità cross-browser */
+/* ------------------------------------------------
+ 1. RESET
+ ------------------------------------------------ */
 *, *::before, *::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
 }
 
-/* Variabili CSS per coerenza grafica del sito */
+/* ------------------------------------------------
+ 2. VARIABILI CSS
+ ------------------------------------------------ */
 :root {
-  --colore-primario: #1a1a1a;       /* Testo scuro principale */
-  --colore-sfondo: #f5f0eb;         /* Sfondo chiaro caldo */
-  --colore-menu-bg: rgba(245, 240, 235, 0.97); /* Sfondo menu semi-opaco */
-  --colore-menu-hover: #1a1a1a;     /* Hover voci menu */
-  --colore-menu-testo: #1a1a1a;     /* Testo voci menu */
-  --colore-toggle-bg: rgba(245, 240, 235, 0.9); /* Sfondo pulsante toggle */
-  --font-principale: 'Georgia', 'Times New Roman', serif; /* Font tipografico */
-  --transizione: 0.3s ease;         /* Transizione standard */
-  --z-nav: 1000;                    /* Z-index navigazione */
+ --colore-primario: #1a1a1a;
+ --colore-sfondo: #f5f0eb;
+ --colore-menu-bg: rgba(245, 240, 235, 0.97);
+ --colore-menu-hover: #1a1a1a;
+ --colore-menu-testo: #1a1a1a;
+ --colore-toggle-bg: rgba(245, 240, 235, 0.9);
+ --font-principale: 'Playfair Display', 'Times New Roman', Georgia, serif;
+ --font-monoline: 'Cormorant Garamond', 'Times New Roman', Georgia, serif;
+ --transizione: 0.3s ease;
+ --z-nav: 1000;
 }
 
-
 /* ------------------------------------------------
-   2. STILI GLOBALI
-   ------------------------------------------------ */
-
-html, body {
-  width: 100%;
-  height: 100%;
-  overflow: hidden; /* Nessuno scroll sulla home – immagine full-screen */
-  font-family: var(--font-principale);
-  background-color: var(--colore-sfondo);
-  color: var(--colore-primario);
+ 3. STILI GLOBALI
+ ------------------------------------------------ */
+html {
+ width: 100%;
+ min-height: 100%;
+ overflow-x: hidden;
 }
 
+body {
+ width: 100%;
+ min-height: 100%;
+ overflow-x: hidden;
+ font-family: var(--font-principale);
+ background-color: var(--colore-sfondo);
+ color: var(--colore-primario);
+ -webkit-font-smoothing: antialiased;
+ -moz-osx-font-smoothing: grayscale;
+}
 
 /* ------------------------------------------------
-   3. NAVIGAZIONE E MENU A TENDINA
-   ------------------------------------------------ */
+ 4. NAVIGAZIONE E MENU A TENDINA
+ ------------------------------------------------ */
 
-/* Contenitore della navigazione – posizionato in alto a sinistra */
 .nav-principale {
-  position: fixed;
-  top: 1.5rem;
-  left: 1.5rem;
-  z-index: var(--z-nav);
+ position: fixed;
+ top: 1.5rem;
+ left: 1.5rem;
+ z-index: var(--z-nav);
 }
 
-/* Pulsante hamburger */
 .nav-toggle {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 5px;
-  width: 44px;
-  height: 44px;
-  background-color: #0a0a0a;
-  border: 1px solid rgba(26, 26, 26, 0.2);
-  border-radius: 4px;
-  cursor: pointer;
-  padding: 8px;
-  transition: background-color var(--transizione), border-color var(--transizione);
-  margin-top: 70px;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ gap: 5px;
+ width: 44px;
+ height: 44px;
+ background-color: #0a0a0a;
+ border: 1px solid rgba(26, 26, 26, 0.2);
+ border-radius: 4px;
+ cursor: pointer;
+ padding: 8px;
+ transition: background-color var(--transizione),
+ border-color var(--transizione);
+ margin-top: 70px;
 }
 
-/* Effetto hover sul pulsante hamburger */
 .nav-toggle:hover {
-  background-color: var(--colore-primario);
+ background-color: var(--colore-primario);
 }
 
-/* Le tre linee dell'icona hamburger */
 .hamburger-linea {
-  display: block;
-  width: 22px;
-  height: 2px;
-  background-color: var(--colore-primario);
-  border-radius: 2px;
-  transition: background-color var(--transizione), transform var(--transizione), opacity var(--transizione);
-  background-color: #ffffff;
+ display: block;
+ width: 22px;
+ height: 2px;
+ background-color: #ffffff;
+ border-radius: 2px;
+ transition: background-color var(--transizione),
+ transform var(--transizione),
+ opacity var(--transizione);
 }
 
-/* Cambio colore delle linee al hover del pulsante */
 .nav-toggle:hover .hamburger-linea {
-  background-color: var(--colore-sfondo);
+ background-color: var(--colore-sfondo);
 }
 
-/* Animazione hamburger → X quando il menu è aperto */
 .nav-toggle[aria-expanded="true"] .hamburger-linea:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);
+ transform: translateY(7px) rotate(45deg);
 }
-.nav-toggle[aria-expanded="true"] .hamburger-linea:nth-child(2) {  opacity: 0;  transform: scaleX(0);}.nav-toggle[aria-expanded="true"] .hamburger-linea:nth-child(3) {  transform: translateY(-7px) rotate(-45deg);
+.nav-toggle[aria-expanded="true"] .hamburger-linea:nth-child(2) {
+ opacity: 0;
+ transform: scaleX(0);
 }
-/* Menu a tendina – lista delle voci */.menu-tendina {  list-style: none;  background-color: var(--colore-menu-bg);  border: 1px solid rgba(26, 26, 26, 0.15);  border-radius: 4px;  margin-top: 0.5rem;  min-width: 160px;  padding: 0.5rem 0;  /* Stato iniziale: nascosto */  opacity: 0;  visibility: hidden;  transform: translateY(-10px);  transition:    opacity var(--transizione),    visibility var(--transizione),    transform var(--transizione);  /* Ombra sottile per profondità */  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+.nav-toggle[aria-expanded="true"] .hamburger-linea:nth-child(3) {
+ transform: translateY(-7px) rotate(-45deg);
 }
-/* Stato aperto del menu – attivato da JavaScript */.menu-tendina.aperto {  opacity: 1;  visibility: visible;  transform: translateY(0);
-}
-/* Singola voce del menu */.menu-voce {  display: block;  padding: 0.65rem 1.25rem;  color: var(--colore-menu-testo);  text-decoration: none;  font-family: var(--font-principale);  font-size: 0.95rem;  letter-spacing: 0.05em;  transition: background-color var(--transizione), letter-spacing var(--transizione);
-}
-/* Effetto hover sulle voci del menu */.menu-voce:hover {  background-color: rgba(26, 26, 26, 0.06);  letter-spacing: 0.1em;}
 
-/* ------------------------------------------------   4. SEZIONE HERO – Sfondo immagine full-screen   ------------------------------------------------ */
-/* L'elemento main occupa tutta la viewport */main {  width: 100%;  height: 100%;}
-/* Sezione hero: immagine di sfondo statica, centrata e copertura totale */
-.hero {  width: 100%;  height: 100vh;            /* Altezza pari all'intera viewport */  background-image: url('../public/assets/erotique_home_page.png');  background-size: cover;   /* L'immagine copre l'intero contenitore */  background-position: center center; /* Centrata su entrambi gli assi */  background-repeat: no-repeat;       /* Nessuna ripetizione */  background-attachment: scroll;      /* Scorrimento normale (no parallax) */}
-
-
-/* ------------------------------------------------   5. MEDIA QUERIES – Design responsive   ------------------------------------------------ */
-/* Tablet (max-width: 768px) */@media (max-width: 768px) {  /* Pulsante leggermente più grande per touch */  .nav-toggle {    width: 48px;    height: 48px;  }
-  /* Voci menu più spaziose per touch */  .menu-voce {    padding: 0.75rem 1.25rem;    font-size: 1rem;  }
+.menu-tendina {
+ list-style: none;
+ background-color: var(--colore-menu-bg);
+ border: 1px solid rgba(26, 26, 26, 0.15);
+ border-radius: 4px;
+ margin-top: 0.5rem;
+ min-width: 160px;
+ padding: 0.5rem 0;
+ opacity: 0;
+ visibility: hidden;
+ transform: translateY(-10px);
+ transition: opacity var(--transizione),
+ visibility var(--transizione),
+ transform var(--transizione);
+ box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
-/* Mobile piccolo (max-width: 480px) */@media (max-width: 480px) {  /* Margine ridotto sui dispositivi piccoli */  .nav-principale {    top: 1rem;    left: 1rem;
-  }
-  /* Menu si estende di più in larghezza su mobile */  .menu-tendina {    min-width: 140px;  }}
+
+.menu-tendina.aperto {
+ opacity: 1;
+ visibility: visible;
+ transform: translateY(0);
+}
+
+.menu-voce {
+ display: block;
+ padding: 0.65rem 1.25rem;
+ color: var(--colore-menu-testo);
+ text-decoration: none;
+ font-family: var(--font-principale);
+ font-size: 0.95rem;
+ letter-spacing: 0.05em;
+ transition: background-color var(--transizione),
+ letter-spacing var(--transizione);
+}
+
+.menu-voce:hover {
+ background-color: rgba(26, 26, 26, 0.06);
+ letter-spacing: 0.1em;
+}
+
+/* ------------------------------------------------
+ 5. SEZIONE HERO
+ ------------------------------------------------ */
+main {
+ width: 100%;
+ height: 100%;
+}
+
+.hero {
+ width: 100%;
+ height: 100vh;
+ background-image: url('../public/assets/erotique_home_page.png');
+ background-size: cover;
+ background-position: center center;
+ background-repeat: no-repeat;
+ background-attachment: scroll;
+}
+
+/* ------------------------------------------------
+ 6. SEZIONE FONT – Monoline / Regular / Medium / Bold
+ ------------------------------------------------ */
+
+.sezione-font {
+ width: 100%;
+ min-height: 100vh;
+ background-color: #ffffff;
+ display: flex;
+ align-items: stretch;
+ border-top: 1px solid rgba(26, 26, 26, 0.08);
+}
+
+/* Colonna sinistra: nomi cliccabili */
+.font-colonna-sinistra {
+ width: 45%;
+ padding: 5rem 3rem 5rem 5rem;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ gap: 0;
+ border-right: 1px solid rgba(26, 26, 26, 0.1);
+}
+
+.font-nome-link {
+ display: block;
+ text-decoration: none;
+ color: var(--colore-primario);
+ line-height: 1.05;
+ cursor: pointer;
+ padding: 0.15rem 0;
+ transition: opacity var(--transizione),
+ letter-spacing var(--transizione);
+ font-size: clamp(3.5rem, 7vw, 6rem);
+}
+
+.font-nome-link:hover {
+ opacity: 0.55;
+ letter-spacing: 0.03em;
+}
+
+/* Monoline: Cormorant Garamond Light – tratti sottilissimi */
+.font-nome-link.monoline {
+ font-family: var(--font-monoline);
+ font-weight: 300;
+}
+
+/* Regular: Playfair Display 400 – contrasto medio */
+.font-nome-link.regular {
+ font-family: var(--font-principale);
+ font-weight: 400;
+}
+
+/* Medium: Playfair Display 600 – semi-bold */
+.font-nome-link.medium {
+ font-family: var(--font-principale);
+ font-weight: 600;
+}
+
+/* Bold: Playfair Display 800 – contrasto estremo */
+.font-nome-link.bold {
+ font-family: var(--font-principale);
+ font-weight: 800;
+}
+
+/* Colonna destra: specimen */
+.font-colonna-destra {
+ width: 55%;
+ padding: 5rem 5rem 5rem 3.5rem;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ gap: 1.8rem;
+}
+
+.font-specimen-blocco {
+ display: block;
+ font-size: clamp(0.78rem, 1.15vw, 0.98rem);
+ line-height: 1.6;
+ color: var(--colore-primario);
+ letter-spacing: 0.01em;
+}
+
+.font-specimen-blocco.monoline {
+ font-family: var(--font-monoline);
+ font-weight: 300;
+}
+
+.font-specimen-blocco.regular {
+ font-family: var(--font-principale);
+ font-weight: 400;
+}
+
+.font-specimen-blocco.medium {
+ font-family: var(--font-principale);
+ font-weight: 600;
+}
+
+.font-specimen-blocco.bold {
+ font-family: var(--font-principale);
+ font-weight: 800;
+}
+
+/* ------------------------------------------------
+ 7. MEDIA QUERIES
+ ------------------------------------------------ */
+
+@media (max-width: 900px) {
+ .sezione-font {
+ flex-direction: column;
+ }
+ .font-colonna-sinistra {
+ width: 100%;
+ border-right: none;
+ border-bottom: 1px solid rgba(26, 26, 26, 0.1);
+ padding: 3rem 2rem;
+ }
+ .font-colonna-destra {
+ width: 100%;
+ padding: 3rem 2rem;
+ }
+}
+
+@media (max-width: 768px) {
+ .nav-toggle {
+ width: 48px;
+ height: 48px;
+ }
+ .menu-voce {
+ padding: 0.75rem 1.25rem;
+ font-size: 1rem;
+ }
+}
+
+@media (max-width: 480px) {
+ .nav-principale {
+ top: 1rem;
+ left: 1rem;
+ }
+ .menu-tendina {
+ min-width: 140px;
+ }
+ .font-nome-link {
+ font-size: 2.8rem;
+ }
+}

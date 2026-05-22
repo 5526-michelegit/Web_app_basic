@@ -1,67 +1,110 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <!-- Meta essenziali per accessibilità e responsività -->
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Erotique Alternate – Esplorazione tipografica" />
-  <title>Erotique Alternate</title>
-
-  <!-- Collegamento al foglio di stile principale -->
-  <link rel="stylesheet" href="./css/style.css" />
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <meta name="description" content="Erotique Alternate – Esplorazione tipografica" />
+ <title>Erotique Alternate</title>
+ <link rel="stylesheet" href="./css/style.css" />
 </head>
 <body>
 
-  <!-- ========================================
-       NAVIGAZIONE PRINCIPALE (Menu a tendina)
-       Posizionata in alto a sinistra
-  ======================================== -->
-  <nav class="nav-principale" aria-label="Navigazione principale">
+ <!-- ========================================
+ NAVIGAZIONE PRINCIPALE
+ ======================================== -->
+ <nav class="nav-principale" aria-label="Navigazione principale">
+ <button
+ class="nav-toggle"
+ id="navToggle"
+ aria-expanded="false"
+ aria-controls="menuTendina"
+ aria-label="Apri menu di navigazione"
+ >
+ <span class="hamburger-linea"></span>
+ <span class="hamburger-linea"></span>
+ <span class="hamburger-linea"></span>
+ </button>
 
-    <!-- Pulsante che attiva/disattiva il menu a tendina -->
-    <button
-      class="nav-toggle"
-      id="navToggle"
-      aria-expanded="false"
-      aria-controls="menuTendina"
-      aria-label="Apri menu di navigazione"
-    >
-      <!-- Tre linee orizzontali (icona hamburger) -->
-      <span class="hamburger-linea"></span>
-      <span class="hamburger-linea"></span>
-      <span class="hamburger-linea"></span>
-    </button>
+ <ul class="menu-tendina" id="menuTendina" role="menu">
+ <li role="none">
+ <a href="pages/origine.html" class="menu-voce" role="menuitem"
+ target="_blank" rel="noopener noreferrer">Origine</a>
+ </li>
+ <li role="none">
+ <a href="pages/glifi.html" class="menu-voce" role="menuitem"
+ target="_blank" rel="noopener noreferrer">Glifi</a>
+ </li>
+ <li role="none">
+ <a href="pages/applicazioni.html" class="menu-voce" role="menuitem"
+ target="_blank" rel="noopener noreferrer">Applicazioni</a>
+ </li>
+ </ul>
+ </nav>
 
-    <!-- Menu a tendina con le voci di navigazione -->
-    <ul class="menu-tendina" id="menuTendina" role="menu">
-      <!-- Voce 1: Origine (per ora non collegata) -->
-      <li role="none">
-        <a href="pages/origine.html" class="menu-voce" role="menuitem" target="_blank" rel="noopener noreferrer">Origine</a>
-      </li>
-      <!-- Voce 2: Glifi (per ora non collegata) -->
-      <li role="none">
-        <a href="pages/glifi.html" class="menu-voce" role="menuitem" target="_blank" rel="noopener noreferrer">Glifi</a>
-      </li>
-      <!-- Voce 3: Applicazioni (per ora non collegata) -->
-      <li role="none">
-        <a href="pages/applicazioni.html" class="menu-voce" role="menuitem" target="_blank" rel="noopener noreferrer">Applicazioni</a>
-      </li>
-    </ul>
-  </nav>
+ <!-- ========================================
+ SEZIONE HERO
+ ======================================== -->
+ <main>
+ <section class="hero" aria-label="Home page Erotique Alternate">
+ </section>
+ </main>
 
-  <!-- ========================================
-       SEZIONE HERO – Immagine di sfondo statica
-       Occupa l'intera viewport
-  ======================================== -->
-  <main>
-    <section class="hero" aria-label="Home page Erotique Alternate">
-      <!-- L'immagine di sfondo è impostata via CSS -->
-      <!-- Testo alternativo per accessibilità tramite aria-label sulla sezione -->
-    </section>
-  </main>
+ <!-- ========================================
+ SEZIONE FONT – Monoline / Regular / Medium / Bold
+ ======================================== -->
+ <section class="sezione-font" aria-label="Varianti tipografiche Erotique Alternate">
 
-  <!-- Collegamento allo script JavaScript principale -->
-  <script src="./js/main.js"></script>
+ <div class="font-colonna-sinistra">
+ <a href="pages/font-detail.html?style=monoline"
+ class="font-nome-link monoline"
+ target="_blank" rel="noopener noreferrer"
+ aria-label="Visualizza font Monoline">Monoline</a>
+
+ <a href="pages/font-detail.html?style=regular"
+ class="font-nome-link regular"
+ target="_blank" rel="noopener noreferrer"
+ aria-label="Visualizza font Regular">Regular</a>
+
+ <a href="pages/font-detail.html?style=medium"
+ class="font-nome-link medium"
+ target="_blank" rel="noopener noreferrer"
+ aria-label="Visualizza font Medium">Medium</a>
+
+ <a href="pages/font-detail.html?style=bold"
+ class="font-nome-link bold"
+ target="_blank" rel="noopener noreferrer"
+ aria-label="Visualizza font Bold">Bold</a>
+ </div>
+
+ <div class="font-colonna-destra">
+ <span class="font-specimen-blocco monoline">
+ {Scripta&nbsp;&nbsp;Amor}&nbsp;&nbsp;@Luxuria_<br>
+ Calligraphia&nbsp;&nbsp;(Velvet touch)&nbsp;/<br>
+ Temptatio*&nbsp;Sinus…&nbsp;↬&nbsp;Ink&amp;Desire
+ </span>
+
+ <span class="font-specimen-blocco regular">
+ {Scripta&nbsp;&nbsp;Amor}&nbsp;&nbsp;@Luxuria_<br>
+ Calligraphia&nbsp;&nbsp;(Velvet touch)&nbsp;/<br>
+ Temptatio*&nbsp;Sinus…&nbsp;↬&nbsp;Ink&amp;Desire
+ </span>
+
+ <span class="font-specimen-blocco medium">
+ {Scripta&nbsp;&nbsp;Amor}&nbsp;&nbsp;@Luxuria_<br>
+ Calligraphia&nbsp;&nbsp;(Velvet touch)&nbsp;/<br>
+ Temptatio*&nbsp;Sinus…&nbsp;↬&nbsp;Ink&amp;Desire
+ </span>
+
+ <span class="font-specimen-blocco bold">
+ {Scripta&nbsp;&nbsp;Amor}&nbsp;&nbsp;@Luxuria_<br>
+ Calligraphia&nbsp;&nbsp;(Velvet touch)&nbsp;/<br>
+ Temptatio*&nbsp;Sinus…&nbsp;↬&nbsp;Ink&amp;Desire
+ </span>
+ </div>
+
+ </section>
+
+ <script src="./js/main.js"></script>
 
 </body>
 </html>
