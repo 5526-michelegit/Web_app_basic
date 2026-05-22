@@ -117,7 +117,7 @@ html, body {
 /* ------------------------------------------------   4. SEZIONE HERO – Sfondo immagine full-screen   ------------------------------------------------ */
 /* L'elemento main occupa tutta la viewport */main {  width: 100%;  height: 100%;}
 /* Sezione hero: immagine di sfondo statica, centrata e copertura totale */
-.hero {  width: 100%;  height: 100vh;            /* Altezza pari all'intera viewport */  background-image: url('/assets/erotique_home_page.png');  background-size: cover;   /* L'immagine copre l'intero contenitore */  background-position: center center; /* Centrata su entrambi gli assi */  background-repeat: no-repeat;       /* Nessuna ripetizione */  background-attachment: scroll;      /* Scorrimento normale (no parallax) */}
+.hero {  width: 100%;  height: 100vh;            /* Altezza pari all'intera viewport */  background-image: url('../public/assets/erotique_home_page.png');  background-size: cover;   /* L'immagine copre l'intero contenitore */  background-position: center center; /* Centrata su entrambi gli assi */  background-repeat: no-repeat;       /* Nessuna ripetizione */  background-attachment: scroll;      /* Scorrimento normale (no parallax) */}
 
 
 /* ------------------------------------------------   5. MEDIA QUERIES – Design responsive   ------------------------------------------------ */
