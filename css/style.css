@@ -105,12 +105,19 @@ body {  width: 100%;  min-height: 100%;
   pointer-events: none;
   z-index: 2;
 }
-.linea-maiuscole  { top: 18%; }.linea-x          { top: 42%; }.linea-base       { top: 70%; }.linea-discendenti{ top: 86%; }
+.linea-maiuscole  { top: var(--linea-maiuscole, 18%); }
+.linea-x          { top: var(--linea-x, 42%); }
+.linea-base       { top: var(--linea-base, 70%); }
+.linea-discendenti{ top: var(--linea-discendenti, 86%); }
 .etichetta-linea {
   position: absolute;  font-family: var(--font-principale);
   font-size: 0.55rem;  letter-spacing: 0.12em;  color: #1a1a1a;
   text-transform: uppercase;  transform: translateY(-130%);  z-index: 3;  pointer-events: none;}
-.etichetta-sx { left: 0.25rem; }.etichetta-dx { right: 0.25rem; }.etichetta-maiuscole  { top: 18%; }.etichetta-x          { top: 42%; }.etichetta-base       { top: 70%; }.etichetta-ascendenti { top: 18%; }.etichetta-discendenti{ top: 86%; transform: translateY(20%); }
+.etichetta-sx { left: 0.25rem; }.etichetta-dx { right: 0.25rem; }.etichetta-maiuscole  { top: var(--linea-maiuscole, 18%); }
+.etichetta-x          { top: var(--linea-x, 42%); }
+.etichetta-base       { top: var(--linea-base, 70%); }
+.etichetta-ascendenti { top: var(--linea-maiuscole, 18%); }
+.etichetta-discendenti{ top: var(--linea-discendenti, 86%); transform: translateY(20%); }
 .aphrodite-testo {  display: block;
   width: 100%;  min-height: 220px;  font-family: var(--font-monoline);  font-weight: 300;  font-size: clamp(5rem, 14vw, 11rem);  line-height: 1.1;  color: #1a1a1a;  padding: 3.5rem 3rem 1rem;  outline: none;  border: none;  background: transparent;  cursor: text;
   position: relative;  z-index: 1;  white-space: nowrap;  overflow: hidden;}
