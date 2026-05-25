@@ -48,7 +48,7 @@ body {  width: 100%;  min-height: 100%;
 
 .nav-toggle {
   display: flex;  flex-direction: column;  justify-content: center;  align-items: center;  gap: 5px;  width: 44px;
-  height: 44px;  background-color: #0a0a0a;  border: 1px solid rgba(26, 26, 26, 0.2);  border-radius: 4px;  cursor: pointer;  padding: 8px;  transition: background-color var(--transizione), border-color var(--transizione);  margin-top: 70px;
+  height: 44px;  background-color: #0a0a0a;  border: 1px solid rgba(26, 26, 26, 0.2);  border-radius: 4px;  cursor: pointer;  padding: 8px;  transition: background-color var(--transizione), border-color var(--transizione);  margin-top: 10px;
 }
 .nav-toggle:hover { background-color: var(--colore-primario); }
 .hamburger-linea {  display: block;
@@ -63,8 +63,114 @@ body {  width: 100%;  min-height: 100%;
 .menu-voce {  display: block;  padding: 0.65rem 1.25rem;  color: var(--colore-menu-testo);  text-decoration: none;  font-family: var(--font-principale);  font-size: 0.95rem;  letter-spacing: 0.05em;  transition: background-color var(--transizione), letter-spacing var(--transizione);
 }
 .menu-voce:hover { background-color: rgba(26, 26, 26, 0.06); letter-spacing: 0.1em; }
-/* ============================================================   6. SEZIONE HERO   ============================================================ */main { width: 100%; height: 100%; }
-.hero {  width: 100%;  height: 100vh;  background-image: url('../public/assets/erotique_home_page.png');  background-size: cover;  background-position: center center;  background-repeat: no-repeat;  background-attachment: scroll;
+/* ============================================================
+   6. SEZIONE HERO
+   ============================================================ */
+.hero {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  overflow: hidden;
+}
+
+.hero-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 900px;
+}
+
+.hero-ornament-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.4rem;
+  width: 100%;
+  margin-bottom: 0.7rem;
+}
+
+.hero-rule {
+  flex: 1;
+  height: 1px;
+  max-width: 200px;
+  background: linear-gradient(to right, transparent, rgba(26,26,26,0.55), #1a1a1a);
+}
+.hero-rule-r {
+  background: linear-gradient(to left, transparent, rgba(26,26,26,0.55), #1a1a1a);
+}
+
+.hero-ornament-svg {
+  width: clamp(20px, 2.6vw, 28px);
+  height: auto;
+  flex-shrink: 0;
+}
+
+.hero-titolo {
+  font-family: var(--font-principale);
+  font-weight: 800;
+  font-size: clamp(4.8rem, 16vw, 16rem);
+  letter-spacing: -0.01em;
+  color: var(--colore-primario);
+  line-height: 0.88;
+  margin: 0;
+  text-align: center;
+  white-space: nowrap;
+}
+.hero-titolo em { font-style: italic; }
+
+.hero-subtitle-row {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  margin-top: 0.2rem;
+}
+.hero-subtitle-rule {
+  width: 36px;
+  height: 1px;
+  background: rgba(26, 26, 26, 0.35);
+}
+.hero-subtitle {
+  font-family: var(--font-monoline);
+  font-weight: 300;
+  font-size: clamp(1.1rem, 2.4vw, 1.75rem);
+  letter-spacing: 0.38em;
+  color: var(--colore-primario);
+  text-transform: lowercase;
+}
+
+.hero-scroll-hint {
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0.35;
+  animation: heroScrollFloat 2.8s ease-in-out infinite;
+}
+.hero-scroll-label {
+  font-family: var(--font-principale);
+  font-size: 0.58rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--colore-primario);
+}
+.hero-scroll-line {
+  width: 1px;
+  height: 38px;
+  background: linear-gradient(to bottom, #1a1a1a, transparent);
+}
+@keyframes heroScrollFloat {
+  0%, 100% { transform: translateY(0); opacity: 0.35; }
+  50%       { transform: translateY(7px); opacity: 0.15; }
+}
+
+@media (max-width: 480px) {
+  .hero-titolo { white-space: normal; }
 }
 /* ============================================================   7. SEZIONE FONT — Monoline / Regular / Medium / Bold
    ============================================================ */
