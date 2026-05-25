@@ -134,7 +134,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const zonaH          = zonaLinee.offsetHeight;
     const pctBase        = (baselineY / zonaH) * 100;
     const pctX           = ((baselineY - xHeight)   / zonaH) * 100;
-    const pctMaiuscole   = ((baselineY - capHeight)  / zonaH) * 100;
+    // const pctMaiuscole   = ((baselineY - capHeight)  / zonaH) * 100; con questa gestione rispetto alle due righe di codice sotto uscivano un filo le lettere minuscole ma quelle maouscole stavano perfettamente
+    const capOffset      = capHeight * 0.08; // 8% del cap-height come margine ottico
+    const pctMaiuscole   = ((baselineY - capHeight - capOffset) / zonaH) * 100;
     const pctDiscendenti = ((baselineY + descDepth)  / zonaH) * 100;
 
     zonaLinee.style.setProperty('--linea-base',        pctBase.toFixed(3)        + '%');
