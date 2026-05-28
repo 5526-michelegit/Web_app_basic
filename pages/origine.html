@@ -1,31 +1,139 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Erotique – Origine</title>
-  <link rel="stylesheet" href="../css/style.css" />
-  <!-- Stile specifico per le pagine interne con sfondo immagine -->
-  <style>
-    body, html {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-    }
-    .sfondo-pagina {
-      width: 100%;
-      height: 100vh;
-      background-image: url('../public/assets/tab_origine.png');
-      background-size: contain;
-      background-position: center center;
-      background-repeat: no-repeat;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Origine — Erotique Alternate</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Playfair+Display:ital,wght@0,400;0,700;0,800;1,400;1,800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: #1a1a1a;
+            font-family: 'Playfair Display', Georgia, serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        .page-wrapper {
+            width: 100%;
+            max-width: 1200px;
+            padding: 0 clamp(2rem, 6vw, 6rem);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        /* ── Columns Layout ── */
+        .columns-layout {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1px 1fr;
+            gap: 0 clamp(1.5rem, 3.5vw, 3.5rem);
+            align-items: start;
+        }
+
+        .col-divider {
+            width: 1px;
+            background-color: rgba(26, 26, 26, 0.2);
+            align-self: stretch;
+            display: block;
+        }
+
+        .col-text {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-weight: 400;
+            font-size: clamp(1.3rem, 2.1vw, 1.75rem);
+            line-height: 2.05;
+            text-align: justify;
+            color: #1a1a1a;
+            hyphens: auto;
+            -webkit-hyphens: auto;
+            word-spacing: 0.01em;
+            letter-spacing: 0.005em;
+        }
+
+        .col-text .e-italic {
+            font-style: italic;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 700px) {
+            html, body {
+                overflow: auto;
+                height: auto;
+            }
+
+            body {
+                height: auto;
+                min-height: 100vh;
+                align-items: flex-start;
+                padding: 8vh 0 10vh;
+            }
+
+            .page-wrapper {
+                min-height: unset;
+                justify-content: flex-start;
+            }
+
+            .columns-layout {
+                grid-template-columns: 1fr;
+                gap: 2rem 0;
+            }
+
+            .col-divider {
+                width: 100%;
+                height: 1px;
+                display: block;
+            }
+
+            .col-text {
+                font-size: clamp(1.1rem, 4.5vw, 1.35rem);
+                line-height: 1.85;
+            }
+        }
+    </style>
 </head>
 <body>
-  <!-- Sfondo immagine fullscreen per la pagina Origine -->
-  <div class="sfondo-pagina"></div>
+
+    <main class="page-wrapper">
+
+        <!-- Due colonne -->
+        <div class="columns-layout">
+
+            <!-- Colonna Sinistra -->
+            <p class="col-text" lang="it">
+                <span class="e-italic">E</span>rotique è un font serif ad alto contrasto progettato da Cosimo Lorenzo Pancini e Maria Chiara Fantini con la collaborazione di Solenn Bordeau. Nasce come evoluzione di Lovelace di Zetafonts, ampliandone le curve romantiche attraverso un'estetica fluida, glitch e neo-brutalista, che fonde suggestioni classiche e sperimentazione contemporanea.
+            </p>
+
+            <!-- Divisore verticale -->
+            <span class="col-divider" aria-hidden="true"></span>
+
+            <!-- Colonna Destra -->
+            <p class="col-text" lang="it">
+                Le sue forme &#8220;evil serif&#8221;, ispirate alle Oldstyle, uniscono eleganza tradizionale e distorsioni digitali con connessioni eccentriche e dettagli calligrafici inaspettati. Il risultato è un carattere sensuale e incisivo, sospeso tra provocazione e raffinatezza, ideale per branding, packaging ed editoria, arricchito da Ornaments e Flourishes decorativi.
+            </p>
+
+        </div>
+
+    </main>
+
 </body>
 </html>
