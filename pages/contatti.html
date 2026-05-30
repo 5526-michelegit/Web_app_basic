@@ -8,586 +8,200 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Playfair+Display:wght@400;600;800&display=swap" rel="stylesheet" />
   <style>
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:        #f5f0eb;
-      --ink:       #1a1a1a;
-      --ink-mid:   #3a3a3a;
-      --ink-faint: #9a9a9a;
-      --white:     #ffffff;
-      --ease:      cubic-bezier(0.4, 0, 0.2, 1);
-      --ease-out:  cubic-bezier(0, 0, 0.2, 1);
-      --duration:  0.4s;
+      --bg: #f5f0eb; --ink: #1a1a1a; --ink-mid: #3a3a3a; --ink-faint: #9a9a9a;
+      --white: #ffffff; --ease: cubic-bezier(0.4,0,0.2,1); --ease-out: cubic-bezier(0,0,0.2,1); --duration: 0.4s;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
-    body {
-      background-color: var(--bg);
-      color: var(--ink);
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-weight: 300;
-      min-height: 100vh;
-      overflow-x: hidden;
-      position: relative;
-    }
+    body { background-color: var(--bg); color: var(--ink); font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 300; min-height: 100vh; overflow-x: hidden; position: relative; }
 
     body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
-      opacity: 0.028;
+      content: ''; position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.028;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Ctext x='10' y='60' font-family='Georgia,serif' font-size='52' fill='%231a1a1a' transform='rotate(-18,110,110)'%3EÆ%3C/text%3E%3Ctext x='110' y='140' font-family='Georgia,serif' font-size='38' fill='%231a1a1a' transform='rotate(-18,110,110)'%3Ealt%3C/text%3E%3Ctext x='30' y='190' font-family='Georgia,serif' font-size='28' fill='%231a1a1a' transform='rotate(-18,110,110)'%3E&amp;%3C/text%3E%3Ctext x='150' y='50' font-family='Georgia,serif' font-size='22' fill='%231a1a1a' transform='rotate(-18,110,110)'%3Efl%3C/text%3E%3C/svg%3E");
       background-repeat: repeat;
     }
 
-    .page-wrapper {
-      position: relative;
-      z-index: 1;
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 0 clamp(1.5rem, 5vw, 4rem);
+    .page-wrapper { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; padding: 0 clamp(1.5rem, 5vw, 4rem); }
+
+    .section-form { padding: clamp(3rem,8vw,6rem) 0 clamp(4rem,8vw,7rem); opacity: 0; transform: translateY(40px); transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out); }
+    .section-form.visible { opacity: 1; transform: translateY(0); }
+
+    .form-header { margin-bottom: clamp(2.5rem,6vw,4rem); }
+
+    .form-title { font-family: 'Playfair Display', Georgia, serif; font-weight: 800; font-size: clamp(3rem,9vw,6.5rem); line-height: 1; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 0.6rem; }
+
+    .form-subtitle { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: clamp(1.1rem,3vw,1.45rem); color: var(--ink-mid); letter-spacing: 0.03em; }
+
+    .contact-form { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem,4vw,3rem) clamp(1.5rem,4vw,3rem); }
+
+    .field-full { grid-column: 1 / -1; }
+
+    .field { position: relative; padding-top: 1.4rem; }
+
+    .field input,
+    .field textarea {
+      width: 100%; background: transparent; border: none; border-bottom: 1px solid #c8bfb5; outline: none;
+      font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(1rem,2.5vw,1.2rem);
+      color: var(--ink); padding: 0.5rem 0 0.6rem; line-height: 1.6;
+      transition: border-color var(--duration) var(--ease); -webkit-appearance: none; border-radius: 0;
     }
 
+    .field textarea { resize: none; overflow-y: auto; min-height: 100px; display: block; }
 
-    .section-form {
-      padding: clamp(3rem, 8vw, 6rem) 0 clamp(4rem, 8vw, 7rem);
-      opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
-    }
+    .field::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0%; height: 1.5px; background: var(--ink); transition: width 0.45s var(--ease); }
 
-    .section-form.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .field-textarea::after { bottom: 1.6rem; }
 
-    .form-header {
-      margin-bottom: clamp(2.5rem, 6vw, 4rem);
-    }
+    .field:focus-within::after { width: 100%; }
 
-    .form-title {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-weight: 800;
-      font-size: clamp(3rem, 9vw, 6.5rem);
-      line-height: 1;
-      letter-spacing: -0.02em;
-      color: var(--ink);
-      margin-bottom: 0.6rem;
-    }
-
-    .form-subtitle {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-weight: 300;
-      font-size: clamp(1.1rem, 3vw, 1.45rem);
-      color: var(--ink-mid);
-      letter-spacing: 0.03em;
-    }
-
-    .contact-form {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: clamp(2rem, 4vw, 3rem) clamp(1.5rem, 4vw, 3rem);
-    }
-
-    .field-full {
-      grid-column: 1 / -1;
-    }
-
-    .field {
-      position: relative;
-      padding-top: 1.4rem;
-    }
-
-    .field input {
-      width: 100%;
-      background: transparent;
-      border: none;
-      border-bottom: 1px solid #c8bfb5;
-      outline: none;
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 300;
-      font-size: clamp(1rem, 2.5vw, 1.2rem);
-      color: var(--ink);
-      padding: 0.5rem 0 0.6rem;
-      line-height: 1.4;
-      transition: border-color var(--duration) var(--ease);
-      -webkit-appearance: none;
-      border-radius: 0;
-    }
-
-    .field::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 0%;
-      height: 1.5px;
-      background: var(--ink);
-      transition: width 0.45s var(--ease);
-    }
-
-    .field:focus-within::after {
-      width: 100%;
-    }
-
-    .field label {
-      position: absolute;
-      top: 2rem;
-      left: 0;
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 300;
-      font-size: clamp(0.95rem, 2.5vw, 1.1rem);
-      color: var(--ink-faint);
-      pointer-events: none;
-      transition: top 0.35s var(--ease), font-size 0.35s var(--ease), color 0.35s var(--ease), letter-spacing 0.35s var(--ease);
-      letter-spacing: 0.01em;
-    }
+    .field label { position: absolute; top: 2rem; left: 0; font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(0.95rem,2.5vw,1.1rem); color: var(--ink-faint); pointer-events: none; transition: top 0.35s var(--ease), font-size 0.35s var(--ease), color 0.35s var(--ease), letter-spacing 0.35s var(--ease); letter-spacing: 0.01em; }
 
     .field input:focus ~ label,
-    .field input:not(:placeholder-shown) ~ label {
-      top: 0;
-      font-size: 0.72rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--ink-mid);
+    .field input:not(:placeholder-shown) ~ label,
+    .field textarea:focus ~ label,
+    .field textarea:not(:placeholder-shown) ~ label {
+      top: 0; font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-mid);
     }
 
-    .field input::placeholder {
-      color: transparent;
-    }
+    .field input::placeholder,
+    .field textarea::placeholder { color: transparent; }
 
-    .btn-submit {
-      grid-column: 1 / -1;
-      justify-self: start;
-      margin-top: clamp(0.5rem, 2vw, 1rem);
-      background: var(--ink);
-      color: var(--white);
-      border: 1.5px solid var(--ink);
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 400;
-      font-size: 0.85rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      padding: 1rem 2.5rem;
-      cursor: pointer;
-      transition: background var(--duration) var(--ease), color var(--duration) var(--ease), transform var(--duration) var(--ease);
-      -webkit-appearance: none;
-      border-radius: 0;
-    }
+    .char-counter { display: block; text-align: right; font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 0.68rem; letter-spacing: 0.08em; color: var(--ink-faint); margin-top: 0.3rem; }
 
-    .btn-submit:hover {
-      background: transparent;
-      color: var(--ink);
-      transform: translateY(-2px);
-    }
+    .btn-submit { grid-column: 1 / -1; justify-self: start; margin-top: clamp(0.5rem,2vw,1rem); background: var(--ink); color: var(--white); border: 1.5px solid var(--ink); font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 0.85rem; letter-spacing: 0.25em; text-transform: uppercase; padding: 1rem 2.5rem; cursor: pointer; transition: background var(--duration) var(--ease), color var(--duration) var(--ease), transform var(--duration) var(--ease); -webkit-appearance: none; border-radius: 0; }
+    .btn-submit:hover { background: transparent; color: var(--ink); transform: translateY(-2px); }
+    .btn-submit:active { transform: translateY(0); }
 
-    .btn-submit:active {
-      transform: translateY(0);
-    }
+    .popup-overlay { display: none; position: fixed; inset: 0; z-index: 9999; background: rgba(26,26,26,0.45); backdrop-filter: blur(4px); align-items: center; justify-content: center; }
+    .popup-card { background: var(--bg); padding: clamp(2rem,6vw,3.5rem) clamp(2rem,6vw,4rem); max-width: 520px; width: 100%; text-align: center; position: relative; transform: scale(0.88) translateY(20px); transition: transform 0.45s var(--ease-out); }
+    .popup-overlay-active .popup-card { transform: scale(1) translateY(0); }
+    .popup-icon { font-size: 2rem; margin-bottom: 1.2rem; color: var(--ink-mid); letter-spacing: 0.1em; font-family: 'Playfair Display', serif; }
+    .popup-title { font-family: 'Playfair Display', serif; font-weight: 600; font-size: clamp(1.3rem,4vw,1.7rem); color: var(--ink); margin-bottom: 0.9rem; }
+    .popup-text { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(1rem,2.5vw,1.2rem); font-style: italic; color: var(--ink-mid); line-height: 1.7; margin-bottom: 2rem; }
+    .btn-close { background: transparent; color: var(--ink); border: 1px solid var(--ink); font-family: 'Cormorant Garamond', serif; font-size: 0.82rem; letter-spacing: 0.22em; text-transform: uppercase; padding: 0.8rem 2rem; cursor: pointer; transition: background var(--duration) var(--ease), color var(--duration) var(--ease); -webkit-appearance: none; border-radius: 0; }
+    .btn-close:hover { background: var(--ink); color: var(--white); }
 
-    .popup-card {
-      background: var(--bg);
-      padding: clamp(2rem, 6vw, 3.5rem) clamp(2rem, 6vw, 4rem);
-      max-width: 520px;
-      width: 100%;
-      text-align: center;
-      position: relative;
-      transform: scale(0.88) translateY(20px);
-      transition: transform 0.45s var(--ease-out);
-    }
-
-    .popup-overlay-active .popup-card {
-      transform: scale(1) translateY(0);
-    }
-
-    .popup-icon {
-      font-size: 2rem;
-      margin-bottom: 1.2rem;
-      color: var(--ink-mid);
-      letter-spacing: 0.1em;
-      font-family: 'Playfair Display', serif;
-    }
-
-    .popup-title {
-      font-family: 'Playfair Display', serif;
-      font-weight: 600;
-      font-size: clamp(1.3rem, 4vw, 1.7rem);
-      color: var(--ink);
-      margin-bottom: 0.9rem;
-    }
-
-    .popup-text {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 300;
-      font-size: clamp(1rem, 2.5vw, 1.2rem);
-      font-style: italic;
-      color: var(--ink-mid);
-      line-height: 1.7;
-      margin-bottom: 2rem;
-    }
-
-    .btn-close {
-      background: transparent;
-      color: var(--ink);
-      border: 1px solid var(--ink);
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.82rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      padding: 0.8rem 2rem;
-      cursor: pointer;
-      transition: background var(--duration) var(--ease), color var(--duration) var(--ease);
-      -webkit-appearance: none;
-      border-radius: 0;
-    }
-
-    .btn-close:hover {
-      background: var(--ink);
-      color: var(--white);
-    }
-
-    .field input.clearing {
-      opacity: 0;
-      transition: opacity 0.5s var(--ease);
-    }
-
-    .divider {
-      width: 100%;
-      height: 1px;
-      background: linear-gradient(to right, transparent, #c8bfb5 20%, #c8bfb5 80%, transparent);
-      margin: 0;
-    }
-
-    .section-designer {
-      padding: clamp(3.5rem, 8vw, 6rem) 0 clamp(3rem, 6vw, 5rem);
-      opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.8s var(--ease-out) 0.15s, transform 0.8s var(--ease-out) 0.15s;
-    }
-
-    .section-designer.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .designer-label {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 300;
-      font-size: 0.75rem;
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
-      color: var(--ink-faint);
-      margin-bottom: 0.8rem;
-    }
-
-    .designer-name {
-      font-family: 'Playfair Display', serif;
-      font-weight: 800;
-      font-size: clamp(2.5rem, 8vw, 5.5rem);
-      line-height: 1;
-      letter-spacing: -0.02em;
-      color: var(--ink);
-      margin-bottom: clamp(2rem, 5vw, 3.5rem);
-    }
-
-    .designer-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: clamp(1.5rem, 4vw, 3rem);
-    }
-
-    .info-item {
-      display: flex;
-      flex-direction: column;
-      gap: 0.35rem;
-    }
-
-    .info-label {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 300;
-      font-size: 0.68rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--ink-faint);
-    }
-
-    .info-value {
-      font-family: 'Playfair Display', serif;
-      font-weight: 400;
-      font-size: clamp(0.85rem, 2vw, 1rem);
-      color: var(--ink);
-      letter-spacing: 0.02em;
-    }
-
-    .info-value a {
-      color: var(--ink);
-      text-decoration: none;
-      border-bottom: 1px solid transparent;
-      transition: border-color var(--duration) var(--ease);
-    }
-
-    .info-value a:hover {
-      border-color: var(--ink);
-    }
-
-    footer {
-      border-top: 1px solid #ddd8d2;
-      padding: clamp(1.5rem, 4vw, 2.5rem) 0;
-      margin-top: 0;
-      text-align: center;
-    }
-
-    .footer-text {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 300;
-      font-size: 0.78rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--ink-faint);
-    }
+    .field input.clearing,
+    .field textarea.clearing { opacity: 0; transition: opacity 0.5s var(--ease); }
 
     @media (max-width: 560px) {
-      .contact-form {
-        grid-template-columns: 1fr;
-      }
-      .field-full {
-        grid-column: 1;
-      }
-      .btn-submit {
-        grid-column: 1;
-        width: 100%;
-        text-align: center;
-      }
-      .designer-grid {
-        grid-template-columns: 1fr;
-        gap: 1.8rem;
-      }
-    }
-
-    @media (min-width: 561px) and (max-width: 768px) {
-      .designer-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      .info-item:last-child {
-        grid-column: 1 / -1;
-      }
+      .contact-form { grid-template-columns: 1fr; }
+      .field-full { grid-column: 1; }
+      .btn-submit { grid-column: 1; width: 100%; text-align: center; }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        transition-duration: 0.01ms !important;
-        animation-duration: 0.01ms !important;
-      }
-      .section-form,
-      .section-designer {
-        opacity: 1;
-        transform: none;
-      }
+      *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+      .section-form { opacity: 1; transform: none; }
     }
   </style>
 </head>
-
 <body>
 
   <div class="page-wrapper">
-
-  </div>
-
-  <section class="section-form" id="section-form" aria-labelledby="form-title">
-    <div class="page-wrapper">
+    <section class="section-form" aria-label="Modulo contatti">
       <div class="form-header">
-        <h1 class="form-title" id="form-title">Contatti</h1>
+        <h1 class="form-title">Contatti</h1>
         <p class="form-subtitle">Scrivici — saremo felici di risponderti.</p>
       </div>
+
       <form class="contact-form" id="contactForm" novalidate>
 
         <div class="field">
-          <input type="text" id="nome" name="nome" placeholder="Nome" autocomplete="given-name" required />
+          <input type="text" id="nome" name="nome" placeholder=" " autocomplete="given-name" required />
           <label for="nome">Nome</label>
         </div>
 
         <div class="field">
-          <input type="text" id="cognome" name="cognome" placeholder="Cognome" autocomplete="family-name" required />
+          <input type="text" id="cognome" name="cognome" placeholder=" " autocomplete="family-name" required />
           <label for="cognome">Cognome</label>
         </div>
 
         <div class="field field-full">
-          <input type="tel" id="telefono" name="telefono" placeholder="Numero di cellulare" autocomplete="tel" />
+          <input type="tel" id="telefono" name="telefono" placeholder=" " autocomplete="tel" />
           <label for="telefono">Numero di cellulare</label>
         </div>
 
         <div class="field field-full">
-          <input type="email" id="email" name="email" placeholder="Email" autocomplete="email" required />
+          <input type="email" id="email" name="email" placeholder=" " autocomplete="email" required />
           <label for="email">Email</label>
+        </div>
+
+        <!-- CAMPO NOTE -->
+        <div class="field field-full field-textarea">
+          <textarea id="note" name="note" placeholder=" " maxlength="5000" rows="4" aria-label="Note"></textarea>
+          <label for="note">Note</label>
+          <span class="char-counter"><span id="noteCount">0</span> / 5000</span>
         </div>
 
         <button type="submit" class="btn-submit" aria-label="Invia messaggio">Invia</button>
 
       </form>
-    </div>
-  </section>
+    </section>
+  </div>
 
-  <div
-    id="popupOverlay"
-    role="dialog"
-    aria-modal="true"
-    aria-labelledby="popupTitle"
-    aria-describedby="popupText"
-    style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(26,26,26,0.55); backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px); z-index:9999; align-items:center; justify-content:center; padding:1.5rem;"
-  >
+  <!-- Popup conferma -->
+  <div class="popup-overlay" id="popupOverlay" role="dialog" aria-modal="true" aria-labelledby="popupTitolo">
     <div class="popup-card">
-      <div class="popup-icon" aria-hidden="true">✦</div>
-      <h2 class="popup-title" id="popupTitle">Messaggio inviato</h2>
-      <p class="popup-text" id="popupText">
-        Grazie per averci contattato.<br />
-        Sarai ricontattato il prima possibile.
-      </p>
-      <button class="btn-close" id="popupChiudi" aria-label="Chiudi finestra di conferma">Chiudi</button>
+      <p class="popup-icon">✦</p>
+      <h2 class="popup-title" id="popupTitolo">Messaggio inviato</h2>
+      <p class="popup-text">Grazie per averci scritto.<br>Ti risponderemo al più presto.</p>
+      <button class="btn-close" id="popupChiudi">Chiudi</button>
     </div>
-  </div>
-
-  <div class="page-wrapper">
-    <div class="divider" role="separator" aria-hidden="true"></div>
-  </div>
-
-  <section class="section-designer" id="section-designer" aria-labelledby="designer-heading">
-    <div class="page-wrapper">
-      <p class="designer-label" aria-hidden="true">Designer</p>
-      <h2 class="designer-name" id="designer-heading">Angelica Corti</h2>
-      <div class="designer-grid">
-        <div class="info-item">
-          <span class="info-label">Email</span>
-          <span class="info-value">
-            <a href="mailto:angelicacorti@gmail.com">angelicacorti@gmail.com</a>
-          </span>
-        </div>
-        <div class="info-item">
-          <span class="info-label">Matricola</span>
-          <span class="info-value">123456</span>
-        </div>
-        <div class="info-item">
-          <span class="info-label">Telefono</span>
-          <span class="info-value">
-            <a href="tel:+393313829836">+39 331 382 9836</a>
-          </span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="page-wrapper">
-    <footer>
-      <p class="footer-text">Erotique Alternate &copy; 2025</p>
-    </footer>
   </div>
 
   <script>
-    (function initScrollAnimations() {
-      var targets = document.querySelectorAll('.section-form, .section-designer');
-      if (!('IntersectionObserver' in window)) {
-        targets.forEach(function(el) { el.classList.add('visible'); });
-        return;
-      }
-      var observer = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-          }
-        });
+    (function() {
+      var targets = document.querySelectorAll('.section-form');
+      if (!('IntersectionObserver' in window)) { targets.forEach(function(el){ el.classList.add('visible'); }); return; }
+      var obs = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); } });
       }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-      targets.forEach(function(el) { observer.observe(el); });
+      targets.forEach(function(el){ obs.observe(el); });
     })();
 
     document.addEventListener('DOMContentLoaded', function() {
       var formEl       = document.getElementById('contactForm');
       var popupOverlay = document.getElementById('popupOverlay');
       var popupChiudi  = document.getElementById('popupChiudi');
+      var noteTA       = document.getElementById('note');
+      var noteCount    = document.getElementById('noteCount');
 
-      formEl.addEventListener('submit', function(e) {
-        e.preventDefault();
-        if (!formEl.checkValidity()) {
-          formEl.reportValidity();
-          return;
-        }
-        openPopup();
-      });
+      noteTA.addEventListener('input', function(){ noteCount.textContent = noteTA.value.length; });
 
-      popupChiudi.addEventListener('click', function() {
-        closePopup();
-      });
+      formEl.addEventListener('submit', function(e){ e.preventDefault(); if(!formEl.checkValidity()){ formEl.reportValidity(); return; } openPopup(); });
+      popupChiudi.addEventListener('click', function(){ closePopup(); });
+      popupOverlay.addEventListener('click', function(e){ if(e.target===popupOverlay) closePopup(); });
+      document.addEventListener('keydown', function(e){ if(e.key==='Escape' && popupOverlay.style.display!=='none') closePopup(); });
 
-      popupOverlay.addEventListener('click', function(e) {
-        if (e.target === popupOverlay) {
-          closePopup();
-        }
-      });
-
-      document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && popupOverlay.style.display !== 'none') {
-          closePopup();
-        }
-      });
-
-      function openPopup() {
-        popupOverlay.style.display = 'flex';
+      function openPopup(){
+        popupOverlay.style.display='flex';
         popupOverlay.classList.add('popup-overlay-active');
-        setTimeout(function() {
-          popupChiudi.focus();
-        }, 100);
+        setTimeout(function(){ popupChiudi.focus(); }, 100);
         popupOverlay.addEventListener('keydown', trapFocus);
       }
-
-      function closePopup() {
+      function closePopup(){
         popupOverlay.classList.remove('popup-overlay-active');
         popupOverlay.removeEventListener('keydown', trapFocus);
-        setTimeout(function() {
-          popupOverlay.style.display = 'none';
-          var inputs = formEl.querySelectorAll('input');
-          inputs.forEach(function(input) {
-            input.classList.add('clearing');
-          });
-          setTimeout(function() {
-            formEl.reset();
-            inputs.forEach(function(input) {
-              input.classList.remove('clearing');
-            });
-          }, 500);
+        setTimeout(function(){
+          popupOverlay.style.display='none';
+          var fields = formEl.querySelectorAll('input, textarea');
+          fields.forEach(function(f){ f.classList.add('clearing'); });
+          setTimeout(function(){ formEl.reset(); noteCount.textContent='0'; fields.forEach(function(f){ f.classList.remove('clearing'); }); }, 500);
         }, 400);
       }
-
-      function trapFocus(e) {
-        if (e.key !== 'Tab') return;
-        var focusable = popupOverlay.querySelectorAll(
-          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-        );
-        var firstEl = focusable[0];
-        var lastEl  = focusable[focusable.length - 1];
-        if (e.shiftKey) {
-          if (document.activeElement === firstEl) {
-            e.preventDefault();
-            lastEl.focus();
-          }
-        } else {
-          if (document.activeElement === lastEl) {
-            e.preventDefault();
-            firstEl.focus();
-          }
-        }
+      function trapFocus(e){
+        if(e.key!=='Tab') return;
+        var focusable = popupOverlay.querySelectorAll('button,[href],input,select,textarea,[tabindex]:not([tabindex="-1"])');
+        var first=focusable[0], last=focusable[focusable.length-1];
+        if(e.shiftKey){ if(document.activeElement===first){ e.preventDefault(); last.focus(); } }
+        else { if(document.activeElement===last){ e.preventDefault(); first.focus(); } }
       }
     });
   </script>
-
 </body>
 </html>

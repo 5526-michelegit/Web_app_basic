@@ -15,8 +15,8 @@
         }
 
         html, body {
-            height: 100%;
-            overflow: hidden;
+            height: auto;
+            overflow-y: auto;
         }
 
         body {
@@ -24,43 +24,27 @@
             color: #1a1a1a;
             font-family: 'Playfair Display', Georgia, serif;
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             justify-content: center;
-            height: 100vh;
+            min-height: 100vh;
             width: 100vw;
+            padding: 10vh 0 12vh;
         }
 
         .page-wrapper {
             width: 100%;
-            max-width: 1200px;
+            max-width: 860px;
             padding: 0 clamp(2rem, 6vw, 6rem);
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
+            align-items: flex-start;
+            justify-content: flex-start;
         }
 
-        /* ── Columns Layout ── */
-        .columns-layout {
-            width: 100%;
-            display: grid;
-            grid-template-columns: 1fr 1px 1fr;
-            gap: 0 clamp(1.5rem, 3.5vw, 3.5rem);
-            align-items: start;
-        }
-
-        .col-divider {
-            width: 1px;
-            background-color: rgba(26, 26, 26, 0.2);
-            align-self: stretch;
-            display: block;
-        }
-
-        .col-text {
+        .body-text {
             font-family: 'Playfair Display', Georgia, serif;
             font-weight: 400;
-            font-size: clamp(1.3rem, 2.1vw, 1.75rem);
+            font-size: clamp(1.1rem, 1.6vw, 1.45rem);
             line-height: 2.05;
             text-align: justify;
             color: #1a1a1a;
@@ -68,45 +52,22 @@
             -webkit-hyphens: auto;
             word-spacing: 0.01em;
             letter-spacing: 0.005em;
+            margin-bottom: 2em;
         }
 
-        .col-text .e-italic {
-            font-style: italic;
+        .body-text:last-child {
+            margin-bottom: 0;
         }
 
         /* ── Responsive ── */
         @media (max-width: 700px) {
-            html, body {
-                overflow: auto;
-                height: auto;
-            }
-
             body {
-                height: auto;
-                min-height: 100vh;
-                align-items: flex-start;
                 padding: 8vh 0 10vh;
             }
 
-            .page-wrapper {
-                min-height: unset;
-                justify-content: flex-start;
-            }
-
-            .columns-layout {
-                grid-template-columns: 1fr;
-                gap: 2rem 0;
-            }
-
-            .col-divider {
-                width: 100%;
-                height: 1px;
-                display: block;
-            }
-
-            .col-text {
-                font-size: clamp(1.1rem, 4.5vw, 1.35rem);
-                line-height: 1.85;
+            .body-text {
+                font-size: clamp(1rem, 4.5vw, 1.25rem);
+                line-height: 1.9;
             }
         }
     </style>
@@ -115,23 +76,29 @@
 
     <main class="page-wrapper">
 
-        <!-- Due colonne -->
-        <div class="columns-layout">
+        <p class="body-text" lang="it">
+            Cormorant Garamond nasce come parte della più ampia famiglia tipografica Cormorant, progettata da Christian Thalmann, type designer svizzero di Zurigo, sotto il nome di Catharsis Fonts. È un carattere serif da display, pensato soprattutto per titoli, copertine, identità visive e testi in grande formato, dove le sue forme eleganti e raffinate possono risaltare al meglio.
+        </p>
 
-            <!-- Colonna Sinistra -->
-            <p class="col-text" lang="it">
-                <span class="e-italic">E</span>rotique è un font serif ad alto contrasto progettato da Cosimo Lorenzo Pancini e Maria Chiara Fantini con la collaborazione di Solenn Bordeau. Nasce come evoluzione di Lovelace di Zetafonts, ampliandone le curve romantiche attraverso un'estetica fluida, glitch e neo-brutalista, che fonde suggestioni classiche e sperimentazione contemporanea.
-            </p>
+        <p class="body-text" lang="it">
+            Il progetto prende ispirazione dall'eredità di Claude Garamond, grande incisore e tipografo francese del XVI secolo. Tuttavia, Cormorant non è una semplice copia storica né un revival fedele di un carattere antico: Thalmann dichiarò di non aver usato un font specifico come modello diretto. Preferì invece assorbire l'atmosfera generale dei Garamond tradizionali e ridisegnare quasi tutti i glifi da zero.
+        </p>
 
-            <!-- Divisore verticale -->
-            <span class="col-divider" aria-hidden="true"></span>
+        <p class="body-text" lang="it">
+            L'idea principale era trasformare l'eleganza classica del Garamond in una forma più teatrale, sottile e luminosa, adatta alla stampa e agli schermi moderni ad alta risoluzione. I Garamond tradizionali sono meravigliosi nei libri, ma a dimensioni molto grandi possono sembrare più pesanti o meno affilati. Cormorant nasce proprio per &#8220;liberare&#8221; quella bellezza antica dai limiti della stampa a metallo e farla fiorire in un disegno più nitido, aristocratico e contemporaneo.
+        </p>
 
-            <!-- Colonna Destra -->
-            <p class="col-text" lang="it">
-                Le sue forme &#8220;evil serif&#8221;, ispirate alle Oldstyle, uniscono eleganza tradizionale e distorsioni digitali con connessioni eccentriche e dettagli calligrafici inaspettati. Il risultato è un carattere sensuale e incisivo, sospeso tra provocazione e raffinatezza, ideale per branding, packaging ed editoria, arricchito da Ornaments e Flourishes decorativi.
-            </p>
+        <p class="body-text" lang="it">
+            La famiglia completa è molto ricca: comprende 45 file font, distribuiti in 9 stili visivi — Roman, Italic, Infant, Infant Italic, Garamond, Garamond Italic, Upright Cursive, Small Caps e Unicase — e in 5 pesi, dal Light al Bold. Cormorant Garamond è quindi una delle varianti della famiglia, più vicina nell'aspetto alla tradizione garaldina classica.
+        </p>
 
-        </div>
+        <p class="body-text" lang="it">
+            Un aspetto importante della sua storia è il carattere open source del progetto. Grazie anche al sostegno di Google Fonts, Cormorant è stato pubblicato gratuitamente e reso accessibile a designer, studenti, editori e sviluppatori. È distribuito con licenza libera, e il progetto è disponibile anche su GitHub, dove può essere studiato e migliorato dalla comunità.
+        </p>
+
+        <p class="body-text" lang="it">
+            Cormorant Garamond racconta quindi un incontro tra passato e presente: da un lato guarda alla nobiltà tipografica del Rinascimento francese, dall'altro appartiene pienamente alla cultura digitale contemporanea, aperta, collaborativa e accessibile. È un font elegante, letterario e sofisticato, perfetto quando si vuole comunicare raffinatezza, cultura e un senso di bellezza classica reinterpretata in chiave moderna.
+        </p>
 
     </main>
 
