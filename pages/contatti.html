@@ -10,7 +10,7 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #f5f0eb; --ink: #1a1a1a; --ink-mid: #3a3a3a; --ink-faint: #9a9a9a;
+      --bg: #ededeb; --ink: #1a1a1a; --ink-mid: #3a3a3a; --ink-faint: #9a9a9a;
       --white: #ffffff; --ease: cubic-bezier(0.4,0,0.2,1); --ease-out: cubic-bezier(0,0,0.2,1); --duration: 0.4s;
     }
 
@@ -18,11 +18,6 @@
 
     body { background-color: var(--bg); color: var(--ink); font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 300; min-height: 100vh; overflow-x: hidden; position: relative; }
 
-    body::before {
-      content: ''; position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.028;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Ctext x='10' y='60' font-family='Georgia,serif' font-size='52' fill='%231a1a1a' transform='rotate(-18,110,110)'%3EÆ%3C/text%3E%3Ctext x='110' y='140' font-family='Georgia,serif' font-size='38' fill='%231a1a1a' transform='rotate(-18,110,110)'%3Ealt%3C/text%3E%3Ctext x='30' y='190' font-family='Georgia,serif' font-size='28' fill='%231a1a1a' transform='rotate(-18,110,110)'%3E&amp;%3C/text%3E%3Ctext x='150' y='50' font-family='Georgia,serif' font-size='22' fill='%231a1a1a' transform='rotate(-18,110,110)'%3Efl%3C/text%3E%3C/svg%3E");
-      background-repeat: repeat;
-    }
 
     .page-wrapper { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; padding: 0 clamp(1.5rem, 5vw, 4rem); }
 
@@ -121,7 +116,7 @@
         </div>
 
         <div class="field field-full">
-          <input type="tel" id="telefono" name="telefono" placeholder=" " autocomplete="tel" />
+          <input type="tel" id="telefono" name="telefono" placeholder=" " autocomplete="tel" pattern="[\+]?[0-9\s\-]{6,20}" title="Inserisci un numero di telefono valido (solo cifre, spazi, trattini o +)" />
           <label for="telefono">Numero di cellulare</label>
         </div>
 
