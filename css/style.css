@@ -5,8 +5,7 @@
 /* ============================================================
    1. GOOGLE FONTS IMPORT
    ============================================================ */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap');
 /* ============================================================
    2. RESET
    ============================================================ */
@@ -25,8 +24,8 @@
   /*--colore-menu-bg:   rgba(245, 240, 235, 0.97); questo è un colore bianco caldo leggermente ambrato*/
   --colore-menu-bg: rgba(237, 237, 235, 0.97);
   --colore-menu-testo:#1a1a1a;
-  --font-principale:  'Playfair Display', 'Times New Roman', Georgia, serif;
-  --font-monoline:    'Cormorant Garamond', 'Times New Roman', Georgia, serif;
+  --font-principale: 'Cormorant Garamond', Georgia, serif;
+  --font-monoline: 'Cormorant Garamond', Georgia, serif;
   --transizione:      0.3s ease;
   --z-nav:            1000;
 }
@@ -79,20 +78,22 @@ body {  width: 100%;  min-height: 100%;
 }
 
 .hero-inner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  max-width: 900px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 900px;
+    gap: 0;
 }
 
 .hero-ornament-row {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1.4rem;
-  width: 100%;
-  margin-bottom: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.4rem;
+    width: 100%;
+    margin-bottom: 0.4rem;
 }
 
 .hero-rule {
@@ -112,15 +113,15 @@ body {  width: 100%;  min-height: 100%;
 }
 
 .hero-titolo {
-  font-family: var(--font-principale);
-  font-weight: 800;
-  font-size: clamp(4.8rem, 16vw, 16rem);
-  letter-spacing: -0.01em;
-  color: var(--colore-primario);
-  line-height: 0.88;
-  margin: 0;
-  text-align: center;
-  white-space: nowrap;
+    font-family: var(--font-principale);
+    font-weight: 700;
+    font-size: clamp(4.8rem, 16vw, 16rem);
+    letter-spacing: -0.01em;
+    color: var(--colore-primario);
+    line-height: 0.95;
+    margin: 0;
+    text-align: center;
+    white-space: nowrap;
 }
 .hero-titolo em { font-style: italic; }
 
@@ -145,13 +146,13 @@ body {  width: 100%;  min-height: 100%;
 }
 
 .hero-scroll-hint {
-  margin-top: 5rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-  opacity: 0.35;
-  animation: heroScrollFloat 2.8s ease-in-out infinite;
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0.35;
+    animation: heroScrollFloat 2.8s ease-in-out infinite;
 }
 .hero-scroll-label {
   font-family: var(--font-principale);

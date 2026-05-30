@@ -3,12 +3,11 @@
 <head>
  <meta charset="UTF-8" />
  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
- <title>Erotique Alternate – Specimen</title>
+ <title>Cormorant Garamond – Specimen</title>
 
  <link rel="preconnect" href="https://fonts.googleapis.com" />
  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
- <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&display=swap"
- rel="stylesheet" />
+ <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet" />
 
  <style>
  *, *::before, *::after {
@@ -199,19 +198,19 @@
  var params = new URLSearchParams(window.location.search);
  var style = (params.get('style') || 'regular').toLowerCase().trim();
 
- var fontFamilyMap = {
- monoline: "'Cormorant Garamond', 'Times New Roman', Georgia, serif",
- regular: "'Playfair Display', 'Times New Roman', Georgia, serif",
- medium: "'Playfair Display', 'Times New Roman', Georgia, serif",
- bold: "'Playfair Display', 'Times New Roman', Georgia, serif"
- };
+var fontFamilyMap = {
+    monoline: "'Cormorant Garamond', Georgia, serif",
+    regular:  "'Cormorant Garamond', Georgia, serif",
+    medium:   "'Cormorant Garamond', Georgia, serif",
+    bold:     "'Cormorant Garamond', Georgia, serif"
+};
 
- var fontWeightMap = {
- monoline: '300',
- regular: '400',
- medium: '600',
- bold: '800'
- };
+var fontWeightMap = {
+    monoline: '300',
+    regular:  '400',
+    medium:   '600',
+    bold:     '700'
+};
 
  var labelMap = {
  monoline: 'Monoline',
@@ -236,7 +235,7 @@
  });
 
  /* Titolo tab */
- document.title = 'Erotique Alternate – ' + label;
+ document.title = 'Cormorant Garamond – ' + label
 
  /* Aggiorna le etichette */
  var etichette = {
