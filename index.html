@@ -6,6 +6,31 @@
   <meta name="description" content="Cormorant Garamond – Esplorazione tipografica" />
   <title>Cormorant Garamond</title>
   <link rel="stylesheet" href="./css/style.css" />
+  <style>
+    .aphrodite {
+      width: 100%;
+      min-height: unset;
+    }
+    .aphrodite-zona-linee {
+      padding-bottom: 0;
+      min-height: 260px;
+    }
+
+    /* Ingrandisce leggermente la label "Scorri" */
+    .hero-scroll-label {
+      font-size: 1rem; /* modifica a piacere, es. 0.95rem, 1.1rem */
+    }
+
+    /* Nasconde l'hint allo scroll con transizione */
+    .hero-scroll-hint {
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .hero-scroll-hint--hidden {
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(8px);
+    }
+  </style>
 </head>
 <body>
 
@@ -63,7 +88,7 @@
           <div class="hero-rule hero-rule-r"></div>
         </div>
 
-        <div class="hero-scroll-hint" aria-hidden="true">
+        <div class="hero-scroll-hint" id="scrollHint" aria-hidden="true">
           <span class="hero-scroll-label">Scorri</span>
           <div class="hero-scroll-line"></div>
         </div>
@@ -102,7 +127,6 @@
       <div class="aphrodite-testo" contenteditable="true" spellcheck="false"
         aria-label="Testo tipografico modificabile" data-placeholder="Aphrodite" role="textbox"></div>
     </div>
-    <!-- aphrodite-zona-anatomia REMOVED -->
   </section>
 
   <!-- SEZIONE PT -->
@@ -127,30 +151,34 @@
       </div>
     </div>
   </section>
-  <style>
-    .aphrodite {
-      width: 100%;
-      min-height: unset;
-    }
-    .aphrodite-zona-linee {
-      padding-bottom: 0;
-      min-height: 260px;
-    }
-  </style>
+
   <script src="./js/main.js"></script>
- 
+
+  <!-- Script: nasconde "Scorri" allo scroll -->
+  <script>
+    (function () {
+      var hint = document.getElementById('scrollHint');
+      if (!hint) return;
+      function onScroll() {
+        if (window.scrollY > 10) {
+          hint.classList.add('hero-scroll-hint--hidden');
+          window.removeEventListener('scroll', onScroll);
+        }
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+    })();
+  </script>
 
   <!-- SEZIONE DESIGNER -->
   <section class="sezione-designer" aria-label="Informazioni designer">
     <div class="designer-inner">
       <div class="divider-designer"></div>
       <div class="designer-content">
-        <p class="designer-label">Designer</p>
         <h2 class="designer-name">Angelica Corti</h2>
         <div class="designer-grid">
           <div class="info-item">
             <span class="info-label">Email</span>
-            <span class="info-value"><a href="mailto:angelicacorti@gmail.com">angelicacorti@gmail.com</a></span>
+            <span class="info-value"><a href="mailto:angelica.corti@mail.polimi.it">angelica.corti@mail.polimi.it</a></span>
           </div>
           <div class="info-item">
             <span class="info-label">Matricola</span>
@@ -158,7 +186,7 @@
           </div>
           <div class="info-item">
             <span class="info-label">Telefono</span>
-            <span class="info-value">+39 331 382 9836</span>
+            <span class="info-value">+39 3319448764</span>
           </div>
         </div>
       </div>
