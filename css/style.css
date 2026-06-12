@@ -200,62 +200,88 @@ body {  width: 100%;  min-height: 100%;
 .font-specimen-blocco {  display: block;  font-size: clamp(0.78rem, 1.15vw, 0.98rem);  line-height: 1.6;  color: var(--colore-primario);  letter-spacing: 0.01em;
 }
 .font-specimen-blocco.monoline { font-family: var(--font-monoline); font-weight: 300; }.font-specimen-blocco.regular  { font-family: var(--font-principale); font-weight: 400; }.font-specimen-blocco.medium   { font-family: var(--font-principale); font-weight: 600; }.font-specimen-blocco.bold     { font-family: var(--font-principale); font-weight: 800; }
-/* ============================================================   8. SEZIONE APHRODITE — Tavola tipografica   ============================================================ */.aphrodite {  width: 100%;
-  min-height: 100vh;  background-color: #ffffff;  border-top: 1px solid rgba(26, 26, 26, 0.08);  padding: 0;
+/* ============================================================
+   8. SEZIONE APHRODITE — Tavola tipografica
+   ============================================================ */
+.aphrodite {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #ffffff;
+  border-top: 1px solid rgba(26, 26, 26, 0.08);
+  padding: 0;
 }
-.aphrodite-zona-linee {  position: relative;  padding: 4rem 4rem 0;  background-color: #ffffff;
+
+.aphrodite-zona-linee {
+  position: relative;
+  padding: 4rem 4rem 0;
+  background-color: #ffffff;
   min-height: 300px;
 }
+
 .linea-guida {
-  position: absolute;  width: 100%;
+  position: absolute;
+  width: 100%;
   left: 0;
   border-top: 1px dashed rgba(26, 26, 26, 0.35);
   pointer-events: none;
   z-index: 2;
 }
-.linea-maiuscole  { top: var(--linea-maiuscole, 18%); }
-.linea-x          { top: var(--linea-x, 42%); }
-.linea-base       { top: var(--linea-base, 70%); }
-.linea-discendenti{ top: var(--linea-discendenti, 86%); }
+
+.linea-maiuscole   { top: var(--linea-maiuscole,  12%); }
+.linea-ascendenti  { top: var(--linea-ascendenti, 22%); }
+.linea-x           { top: var(--linea-x,          42%); }
+.linea-base        { top: var(--linea-base,        70%); }
+.linea-discendenti { top: var(--linea-discendenti, 86%); }
+
 .etichetta-linea {
-  position: absolute;  font-family: var(--font-principale);
-  font-size: 0.55rem;  letter-spacing: 0.12em;  color: #1a1a1a;
-  text-transform: uppercase;  transform: translateY(-130%);  z-index: 3;  pointer-events: none;}
-.etichetta-sx { left: 0.25rem; }.etichetta-dx { right: 0.25rem; }.etichetta-maiuscole  { top: var(--linea-maiuscole, 18%); }
-.etichetta-x          { top: var(--linea-x, 42%); }
-.etichetta-base       { top: var(--linea-base, 70%); }
-.etichetta-ascendenti { top: var(--linea-maiuscole, 18%); }
-.etichetta-discendenti{ top: var(--linea-discendenti, 86%); transform: translateY(20%); }
-.aphrodite-testo {  display: block;
-  width: 100%;  min-height: 220px;  font-family: var(--font-monoline);  font-weight: 300;  font-size: clamp(5rem, 14vw, 11rem);  line-height: 1.1;  color: #1a1a1a;  padding: 3.5rem 3rem 1rem;  outline: none;  border: none;  background: transparent;  cursor: text;
-  position: relative;  z-index: 1;  white-space: nowrap;  overflow: hidden;}
-.aphrodite-testo:empty::before {  content: attr(data-placeholder);  color: #cccccc;  pointer-events: none;}
-.aphrodite-zona-anatomia {  display: flex;  flex-direction: row;  min-height: 62vh;  border-top: 1px solid rgba(26, 26, 26, 0.12);}
-.anatomia-lettera-grande {  width: 40%;  border-right: 1px solid rgba(26, 26, 26, 0.1);  display: flex;  align-items: center;
-  justify-content: center;  padding: 3rem;  position: relative;  overflow: hidden;
+  position: absolute;
+  font-family: var(--font-principale);
+  font-size: 0.55rem;
+  letter-spacing: 0.12em;
+  color: #1a1a1a;
+  text-transform: uppercase;
+  transform: translateY(-130%);
+  z-index: 3;
+  pointer-events: none;
 }
-.lettera-a {  font-family: var(--font-principale);  font-weight: 800;  font-size: clamp(12rem, 22vw, 18rem);  color: #1a1a1a;  line-height: 0.85;
-  position: relative;  user-select: none;}
-.frecce-svg {  position: absolute;  top: 0; left: 0;  width: 100%; height: 100%;  pointer-events: none;  z-index: 2;
+
+.etichetta-sx { left: 0.25rem; }
+.etichetta-dx { right: 0.25rem; }
+
+.etichetta-maiuscole  { top: var(--linea-maiuscole,  12%); }
+.etichetta-x          { top: var(--linea-x,          42%); }
+.etichetta-base       { top: var(--linea-base,        70%); }
+.etichetta-ascendenti { top: var(--linea-ascendenti, 22%); }
+.etichetta-discendenti {
+  top: var(--linea-discendenti, 86%);
+  transform: translateY(20%);
 }
-.anatomia-callout-griglia {  width: 60%;  display: grid;  grid-template-columns: 1fr 1fr;  padding: 2rem 3rem;  gap: 0;}
-.callout-blocco {
-  position: relative;  display: flex;  align-items: center;  justify-content: center;  min-height: 200px;
-  padding: 1.5rem;  border-bottom: 1px solid rgba(26, 26, 26, 0.06);}
-.callout-blocco:nth-child(odd) { border-right: 1px solid rgba(26, 26, 26, 0.06); }
-.callout-lettera {  font-family: var(--font-principale);  font-weight: 400;  color: #1a1a1a;  font-size: clamp(5rem, 9vw, 8rem);  line-height: 1;  user-select: none;
+
+.aphrodite-testo {
+  display: block;
+  width: 100%;
+  min-height: 220px;
+  font-family: var(--font-monoline);
+  font-weight: 300;
+  font-size: clamp(5rem, 14vw, 11rem);
+  line-height: 1.1;
+  color: #1a1a1a;
+  padding: 3.5rem 3rem 1rem;
+  outline: none;
+  border: none;
+  background: transparent;
+  cursor: text;
   position: relative;
   z-index: 1;
+  white-space: nowrap;
+  overflow: hidden;
 }
-.callout-etichetta {  position: absolute;  font-size: 0.58rem;  letter-spacing: 0.05em;  color: #1a1a1a;  line-height: 1.4;  display: flex;  align-items: center;  gap: 0.35em;  z-index: 2;
+
+.aphrodite-testo:empty::before {
+  content: attr(data-placeholder);
+  color: #cccccc;
+  pointer-events: none;
 }
-.callout-etichetta.destra { flex-direction: row-reverse; text-align: right; }
-.callout-linea {  display: inline-block;  border-top: 1px dashed #aaaaaa;  flex-shrink: 0;  align-self: center;
-  width: 28px;}
-.callout-p .callout-swash       { top: 10%; right: 6%; flex-direction: row-reverse; text-align: right; }.callout-p .callout-grazia-racc { bottom: 22%; left: 4%; }.callout-s .callout-grazia-cuneo{ top: 8%; right: 4%; flex-direction: row-reverse; text-align: right; }
-.callout-s .callout-occhiello   { bottom: 28%; right: 4%; flex-direction: row-reverse; text-align: right; }
-.callout-e .callout-contrasto   { top: 10%; left: 4%; }
-.callout-e .callout-correzione  { bottom: 10%; left: 4%; }.callout-k .callout-ascendente  { top: 8%; right: 4%; flex-direction: row-reverse; text-align: right; }.callout-k .callout-innesto     { bottom: 10%; right: 4%; flex-direction: row-reverse; text-align: right; }
 /* ============================================================   9. SEZIONE PT — Controllo dimensione testo   ============================================================ */
 .sezione-pt {  width: 100%;  min-height: 100vh;
   background-color: #ffffff;  border-top: 1px solid rgba(26, 26, 26, 0.08);  display: flex;  flex-direction: row;
