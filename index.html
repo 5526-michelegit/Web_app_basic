@@ -1,202 +1,192 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Cormorant Garamond – Esplorazione tipografica" />
-  <title>Cormorant Garamond</title>
-  <link rel="stylesheet" href="./css/style.css" />
-  <style>
-    .aphrodite {
-      width: 100%;
-      min-height: unset;
-    }
-    .aphrodite-zona-linee {
-      padding-bottom: 0;
-      min-height: 260px;
-    }
-
-    /* Ingrandisce leggermente la label "Scorri" */
-    .hero-scroll-label {
-      font-size: 1rem; /* modifica a piacere, es. 0.95rem, 1.1rem */
-    }
-
-    /* Nasconde l'hint allo scroll con transizione */
-    .hero-scroll-hint {
-      transition: opacity 0.5s ease, transform 0.5s ease;
-    }
-    .hero-scroll-hint--hidden {
-      opacity: 0;
-      pointer-events: none;
-      transform: translateY(8px);
-    }
-  </style>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <meta name="description" content="Cormorant Garamond – Esplorazione tipografica" />
+ <title>Cormorant Garamond</title>
+ <link rel="stylesheet" href="./css/style.css" />
+ <style>
+ /* Nasconde l'hint allo scroll con transizione */
+ .hero-scroll-hint {
+   transition: opacity 0.5s ease, transform 0.5s ease;
+ }
+ .hero-scroll-hint--hidden {
+   opacity: 0;
+   pointer-events: none;
+   transform: translateY(8px);
+ }
+ /* Ingrandisce leggermente la label "Scorri" */
+ .hero-scroll-label {
+   font-size: 1rem;
+ }
+ </style>
 </head>
 <body>
 
-  <!-- NAVIGAZIONE -->
-  <nav class="nav-principale" aria-label="Navigazione principale">
-    <button class="nav-toggle" id="navToggle"
-      aria-expanded="false" aria-controls="menuTendina" aria-label="Apri menu di navigazione">
-      <span class="hamburger-linea"></span>
-      <span class="hamburger-linea"></span>
-      <span class="hamburger-linea"></span>
-    </button>
-    <ul class="menu-tendina" id="menuTendina" role="menu">
-      <li role="none"><a href="pages/origine.html" class="menu-voce" role="menuitem" target="_blank" rel="noopener noreferrer">Origine</a></li>
-      <li role="none"><a href="pages/glifi.html" class="menu-voce" role="menuitem" target="_blank" rel="noopener noreferrer">Glifi</a></li>
-      <li role="none"><a href="pages/contatti.html" class="menu-voce" role="menuitem" target="_blank" rel="noopener noreferrer">Contatti</a></li>
-    </ul>
-  </nav>
+ <!-- NAVIGAZIONE -->
+ <nav class="nav-principale" aria-label="Navigazione principale">
+   <button class="nav-toggle" id="navToggle"
+     aria-expanded="false" aria-controls="menuTendina" aria-label="Apri menu di navigazione">
+     <span class="hamburger-linea"></span>
+     <span class="hamburger-linea"></span>
+     <span class="hamburger-linea"></span>
+   </button>
+   <ul class="menu-tendina" id="menuTendina" role="menu">
+     <li role="none"><a href="pages/origine.html" class="menu-voce" role="menuitem" target="_blank" rel="noopener noreferrer">Origine</a></li>
+     <li role="none"><a href="pages/glifi.html" class="menu-voce" role="menuitem" target="_blank" rel="noopener noreferrer">Glifi</a></li>
+     <li role="none"><a href="pages/contatti.html" class="menu-voce" role="menuitem" target="_blank" rel="noopener noreferrer">Contatti</a></li>
+   </ul>
+ </nav>
 
-  <!-- HERO -->
-  <main>
-    <section class="hero" aria-label="Home page Cormorant Garamond">
-      <div class="hero-inner">
-        <div class="hero-ornament-row" aria-hidden="true">
-          <div class="hero-rule"></div>
-          <svg class="hero-ornament-svg" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"
-            fill="none" stroke="#1a1a1a" stroke-width="1.2" stroke-linecap="round">
-            <line x1="20" y1="2" x2="20" y2="38"/>
-            <line x1="2" y1="20" x2="38" y2="20"/>
-            <path d="M20 2 C15 8 8 8 8 14 C8 18 12 20 20 20 C28 20 32 18 32 14 C32 8 25 8 20 2Z" stroke-width="0.8" opacity="0.5"/>
-            <path d="M20 38 C15 32 8 32 8 26 C8 22 12 20 20 20 C28 20 32 22 32 26 C32 32 25 32 20 38Z" stroke-width="0.8" opacity="0.5"/>
-            <circle cx="20" cy="20" r="3" stroke-width="1"/>
-            <circle cx="20" cy="20" r="1.2" fill="#1a1a1a"/>
-          </svg>
-          <div class="hero-rule hero-rule-r"></div>
-        </div>
-        <h1 class="hero-titolo"><em>C</em>ormorant</h1>
+ <!-- HERO -->
+ <main>
+   <section class="hero" aria-label="Home page Cormorant Garamond">
+     <div class="hero-inner">
+       <div class="hero-ornament-row" aria-hidden="true">
+         <div class="hero-rule"></div>
+         <svg class="hero-ornament-svg" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"
+           fill="none" stroke="#1a1a1a" stroke-width="1.2" stroke-linecap="round">
+           <line x1="20" y1="2" x2="20" y2="38"/>
+           <line x1="2" y1="20" x2="38" y2="20"/>
+           <path d="M20 2 C15 8 8 8 8 14 C8 18 12 20 20 20 C28 20 32 18 32 14 C32 8 25 8 20 2Z" stroke-width="0.8" opacity="0.5"/>
+           <path d="M20 38 C15 32 8 32 8 26 C8 22 12 20 20 20 C28 20 32 22 32 26 C32 32 25 32 20 38Z" stroke-width="0.8" opacity="0.5"/>
+           <circle cx="20" cy="20" r="3" stroke-width="1"/>
+           <circle cx="20" cy="20" r="1.2" fill="#1a1a1a"/>
+         </svg>
+         <div class="hero-rule hero-rule-r"></div>
+       </div>
+       <h1 class="hero-titolo"><em>C</em>ormorant</h1>
 
-        <div class="hero-subtitle-row">
-          <div class="hero-subtitle-rule"></div>
-          <span class="hero-subtitle">garamond</span>
-          <div class="hero-subtitle-rule"></div>
-        </div>
+       <div class="hero-subtitle-row">
+         <div class="hero-subtitle-rule"></div>
+         <span class="hero-subtitle">garamond</span>
+         <div class="hero-subtitle-rule"></div>
+       </div>
 
-        <div class="hero-ornament-row" style="margin-top: 1.4rem;" aria-hidden="true">
-          <div class="hero-rule"></div>
-          <svg class="hero-ornament-svg" viewBox="0 0 56 14" xmlns="http://www.w3.org/2000/svg"
-            fill="none" stroke="#1a1a1a" stroke-width="1" stroke-linecap="round">
-            <line x1="20" y1="7" x2="36" y2="7"/>
-            <polyline points="14,3 8,7 14,11"/>
-            <polyline points="42,3 48,7 42,11"/>
-            <circle cx="28" cy="7" r="1.5" fill="#1a1a1a" stroke="none"/>
-            <line x1="3" y1="7" x2="6" y2="7"/>
-            <line x1="50" y1="7" x2="53" y2="7"/>
-          </svg>
-          <div class="hero-rule hero-rule-r"></div>
-        </div>
+       <div class="hero-ornament-row" style="margin-top: 1.4rem;" aria-hidden="true">
+         <div class="hero-rule"></div>
+         <svg class="hero-ornament-svg" viewBox="0 0 56 14" xmlns="http://www.w3.org/2000/svg"
+           fill="none" stroke="#1a1a1a" stroke-width="1" stroke-linecap="round">
+           <line x1="20" y1="7" x2="36" y2="7"/>
+           <polyline points="14,3 8,7 14,11"/>
+           <polyline points="42,3 48,7 42,11"/>
+           <circle cx="28" cy="7" r="1.5" fill="#1a1a1a" stroke="none"/>
+           <line x1="3" y1="7" x2="6" y2="7"/>
+           <line x1="50" y1="7" x2="53" y2="7"/>
+         </svg>
+         <div class="hero-rule hero-rule-r"></div>
+       </div>
 
-        <div class="hero-scroll-hint" id="scrollHint" aria-hidden="true">
-          <span class="hero-scroll-label">Scorri</span>
-          <div class="hero-scroll-line"></div>
-        </div>
-      </div>
-    </section>
-  </main>
+       <div class="hero-scroll-hint" id="scrollHint" aria-hidden="true">
+         <span class="hero-scroll-label">Scorri</span>
+         <div class="hero-scroll-line"></div>
+       </div>
+     </div>
+   </section>
+ </main>
 
-  <!-- SEZIONE FONT -->
-  <section class="sezione-font" aria-label="Varianti tipografiche Cormorant Garamond">
-    <div class="font-colonna-sinistra">
-      <a href="pages/font-detail.html?style=monoline" class="font-nome-link monoline" target="_blank" rel="noopener noreferrer">Monoline</a>
-      <a href="pages/font-detail.html?style=regular"  class="font-nome-link regular"  target="_blank" rel="noopener noreferrer">Regular</a>
-      <a href="pages/font-detail.html?style=medium"   class="font-nome-link medium"   target="_blank" rel="noopener noreferrer">Medium</a>
-      <a href="pages/font-detail.html?style=bold"     class="font-nome-link bold"     target="_blank" rel="noopener noreferrer">Bold</a>
-    </div>
-    <div class="font-colonna-destra">
-      <span class="font-specimen-blocco monoline">{Scripta&nbsp;&nbsp;Amor}&nbsp;&nbsp;@Luxuria_<br>Calligraphia&nbsp;&nbsp;(Velvet touch)&nbsp;/<br>Temptatio*&nbsp;Sinus…&nbsp;↬&nbsp;Ink&amp;Desire</span>
-      <span class="font-specimen-blocco regular">{Scripta&nbsp;&nbsp;Amor}&nbsp;&nbsp;@Luxuria_<br>Calligraphia&nbsp;&nbsp;(Velvet touch)&nbsp;/<br>Temptatio*&nbsp;Sinus…&nbsp;↬&nbsp;Ink&amp;Desire</span>
-      <span class="font-specimen-blocco medium">{Scripta&nbsp;&nbsp;Amor}&nbsp;&nbsp;@Luxuria_<br>Calligraphia&nbsp;&nbsp;(Velvet touch)&nbsp;/<br>Temptatio*&nbsp;Sinus…&nbsp;↬&nbsp;Ink&amp;Desire</span>
-      <span class="font-specimen-blocco bold">{Scripta&nbsp;&nbsp;Amor}&nbsp;&nbsp;@Luxuria_<br>Calligraphia&nbsp;&nbsp;(Velvet touch)&nbsp;/<br>Temptatio*&nbsp;Sinus…&nbsp;↬&nbsp;Ink&amp;Desire</span>
-    </div>
-  </section>
+ <!-- SEZIONE FONT -->
+ <section class="sezione-font" aria-label="Varianti tipografiche Cormorant Garamond">
+   <div class="font-colonna-sinistra">
+     <a href="pages/font-detail.html?style=monoline" class="font-nome-link monoline" target="_blank" rel="noopener noreferrer">Monoline</a>
+     <a href="pages/font-detail.html?style=regular" class="font-nome-link regular" target="_blank" rel="noopener noreferrer">Regular</a>
+     <a href="pages/font-detail.html?style=medium" class="font-nome-link medium" target="_blank" rel="noopener noreferrer">Medium</a>
+     <a href="pages/font-detail.html?style=bold" class="font-nome-link bold" target="_blank" rel="noopener noreferrer">Bold</a>
+   </div>
+   <div class="font-colonna-destra">
+     <span class="font-specimen-blocco monoline">{Scripta&nbsp;&nbsp;Amor}&nbsp;&nbsp;@Luxuria_<br>Calligraphia&nbsp;&nbsp;(Velvet touch)&nbsp;/<br>Temptatio*&nbsp;Sinus…&nbsp;↬&nbsp;Ink&amp;Desire</span>
+     <span class="font-specimen-blocco regular">{Scripta&nbsp;&nbsp;Amor}&nbsp;&nbsp;@Luxuria_<br>Calligraphia&nbsp;&nbsp;(Velvet touch)&nbsp;/<br>Temptatio*&nbsp;Sinus…&nbsp;↬&nbsp;Ink&amp;Desire</span>
+     <span class="font-specimen-blocco medium">{Scripta&nbsp;&nbsp;Amor}&nbsp;&nbsp;@Luxuria_<br>Calligraphia&nbsp;&nbsp;(Velvet touch)&nbsp;/<br>Temptatio*&nbsp;Sinus…&nbsp;↬&nbsp;Ink&amp;Desire</span>
+     <span class="font-specimen-blocco bold">{Scripta&nbsp;&nbsp;Amor}&nbsp;&nbsp;@Luxuria_<br>Calligraphia&nbsp;&nbsp;(Velvet touch)&nbsp;/<br>Temptatio*&nbsp;Sinus…&nbsp;↬&nbsp;Ink&amp;Desire</span>
+   </div>
+ </section>
 
-<!-- SEZIONE APHRODITE -->
-<section class="aphrodite" aria-label="Tavola tipografica Cormorant Garamond">
-  <div class="aphrodite-zona-linee">
-    <div class="linea-guida linea-maiuscole"></div>
-    <div class="linea-guida linea-ascendenti"></div>
-    <div class="linea-guida linea-x"></div>
-    <div class="linea-guida linea-base"></div>
-    <div class="linea-guida linea-discendenti"></div>
-    <span class="etichetta-linea etichetta-sx etichetta-maiuscole">Linea delle maiuscole</span>
-    <span class="etichetta-linea etichetta-sx etichetta-x">Linea delle x</span>
-    <span class="etichetta-linea etichetta-sx etichetta-base">Linea di base</span>
-    <span class="etichetta-linea etichetta-dx etichetta-ascendenti">Ascendenti</span>
-    <span class="etichetta-linea etichetta-dx etichetta-discendenti">Discendenti</span>
-    <div class="aphrodite-testo" contenteditable="true" spellcheck="false"
-      aria-label="Testo tipografico modificabile" data-placeholder="Aphrodite" role="textbox"></div>
-  </div>
-</section>
+ <!-- SEZIONE APHRODITE -->
+ <section class="aphrodite" aria-label="Tavola tipografica Cormorant Garamond">
+   <div class="aphrodite-zona-linee">
+     <div class="linea-guida linea-maiuscole"></div>
+     <div class="linea-guida linea-ascendenti"></div>
+     <div class="linea-guida linea-x"></div>
+     <div class="linea-guida linea-base"></div>
+     <div class="linea-guida linea-discendenti"></div>
+     <span class="etichetta-linea etichetta-sx etichetta-maiuscole">Linea delle maiuscole</span>
+     <span class="etichetta-linea etichetta-sx etichetta-x">Linea delle x</span>
+     <span class="etichetta-linea etichetta-sx etichetta-base">Linea di base</span>
+     <span class="etichetta-linea etichetta-dx etichetta-ascendenti">Ascendenti</span>
+     <span class="etichetta-linea etichetta-dx etichetta-discendenti">Discendenti</span>
+     <div class="aphrodite-testo" contenteditable="true" spellcheck="false"
+       aria-label="Testo tipografico modificabile" data-placeholder="Aphrodite" role="textbox"></div>
+   </div>
+ </section>
 
-  <!-- SEZIONE PT -->
-  <section class="sezione-pt" aria-label="Controllo dimensione tipografica in pt">
-    <div class="pt-area-testo">
-      <span class="pt-testo-principale" id="ptTesto" style="font-size:96px;">Cormorant</span>
-    </div>
-    <div class="pt-area-controlli">
-      <div class="pt-valore-display">
-        <span class="pt-numero" id="ptNumero" aria-live="polite" aria-atomic="true">72</span>
-        <span class="pt-label">pt</span>
-      </div>
-      <div class="pt-slider-wrapper">
-        <span class="pt-slider-a-piccola" aria-hidden="true">A</span>
-        <input type="range" id="ptSlider" min="6" max="400" step="1" value="72" aria-label="Dimensione in pt" />
-        <span class="pt-slider-a-grande" aria-hidden="true">A</span>
-      </div>
-      <div class="pt-bottoni-riga" role="group" aria-label="Aumenta o diminuisci pt">
-        <button class="pt-btn" id="ptMinus" aria-label="Diminuisci dimensione" title="Diminuisci pt">−</button>
-        <span class="pt-divisore" aria-hidden="true"></span>
-        <button class="pt-btn" id="ptPlus"  aria-label="Aumenta dimensione"   title="Aumenta pt">+</button>
-      </div>
-    </div>
-  </section>
+ <!-- SEZIONE PT -->
+ <section class="sezione-pt" aria-label="Controllo dimensione tipografica in pt">
+   <div class="pt-area-testo">
+     <span class="pt-testo-principale" id="ptTesto" style="font-size: clamp(1.5rem, 8vw, 6rem);">Cormorant</span>
+   </div>
+   <div class="pt-area-controlli">
+     <div class="pt-valore-display">
+       <span class="pt-numero" id="ptNumero" aria-live="polite" aria-atomic="true">72</span>
+       <span class="pt-label">pt</span>
+     </div>
+     <div class="pt-slider-wrapper">
+       <span class="pt-slider-a-piccola" aria-hidden="true">A</span>
+       <input type="range" id="ptSlider" min="6" max="400" step="1" value="72" aria-label="Dimensione in pt" />
+       <span class="pt-slider-a-grande" aria-hidden="true">A</span>
+     </div>
+     <div class="pt-bottoni-riga" role="group" aria-label="Aumenta o diminuisci pt">
+       <button class="pt-btn" id="ptMinus" aria-label="Diminuisci dimensione" title="Diminuisci pt">−</button>
+       <span class="pt-divisore" aria-hidden="true"></span>
+       <button class="pt-btn" id="ptPlus" aria-label="Aumenta dimensione" title="Aumenta pt">+</button>
+     </div>
+   </div>
+ </section>
 
-  <script src="./js/main.js"></script>
+ <script src="./js/main.js"></script>
 
-  <!-- Script: nasconde "Scorri" allo scroll -->
-  <script>
-    (function () {
-      var hint = document.getElementById('scrollHint');
-      if (!hint) return;
-      function onScroll() {
-        if (window.scrollY > 10) {
-          hint.classList.add('hero-scroll-hint--hidden');
-          window.removeEventListener('scroll', onScroll);
-        }
-      }
-      window.addEventListener('scroll', onScroll, { passive: true });
-    })();
-  </script>
+ <!-- Script: nasconde "Scorri" allo scroll -->
+ <script>
+   (function () {
+     var hint = document.getElementById('scrollHint');
+     if (!hint) return;
+     function onScroll() {
+       if (window.scrollY > 10) {
+         hint.classList.add('hero-scroll-hint--hidden');
+         window.removeEventListener('scroll', onScroll);
+       }
+     }
+     window.addEventListener('scroll', onScroll, { passive: true });
+   })();
+ </script>
 
-  <!-- SEZIONE DESIGNER -->
-  <section class="sezione-designer" aria-label="Informazioni designer">
-    <div class="designer-inner">
-      <div class="divider-designer"></div>
-      <div class="designer-content">
-        <h2 class="designer-name">Angelica Corti</h2>
-        <div class="designer-grid">
-          <div class="info-item">
-            <span class="info-label">Email</span>
-            <span class="info-value"><a href="mailto:angelica.corti@mail.polimi.it">angelica.corti@mail.polimi.it</a></span>
-          </div>
-          <div class="info-item">
-            <span class="info-label">Matricola</span>
-            <span class="info-value">123456</span>
-          </div>
-          <div class="info-item">
-            <span class="info-label">Telefono</span>
-            <span class="info-value">+39 3319448764</span>
-          </div>
-        </div>
-      </div>
-      <div class="divider-designer"></div>
-      <footer class="footer-home">
-        <span class="footer-home-text">Cormorant Garamond © 2025</span>
-      </footer>
-    </div>
-  </section>
+ <!-- SEZIONE DESIGNER -->
+ <section class="sezione-designer" aria-label="Informazioni designer">
+   <div class="designer-inner">
+     <div class="divider-designer"></div>
+     <div class="designer-content">
+       <h2 class="designer-name">Angelica Corti</h2>
+       <div class="designer-grid">
+         <div class="info-item">
+           <span class="info-label">Email</span>
+           <span class="info-value"><a href="mailto:angelica.corti@mail.polimi.it">angelica.corti@mail.polimi.it</a></span>
+         </div>
+         <div class="info-item">
+           <span class="info-label">Matricola</span>
+           <span class="info-value">11050634</span>
+         </div>
+         <div class="info-item">
+           <span class="info-label">Telefono</span>
+           <span class="info-value">+39 3319448764</span>
+         </div>
+       </div>
+     </div>
+     <div class="divider-designer"></div>
+     <footer class="footer-home">
+       <span class="footer-home-text">Cormorant Garamond © 2025</span>
+     </footer>
+   </div>
+ </section>
 
 </body>
 </html>

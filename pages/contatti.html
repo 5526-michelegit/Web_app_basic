@@ -6,31 +6,75 @@
   <title>Cormorant Garamond — Contatti</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet" />  <style>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet" />
+  <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #ededeb; --ink: #1a1a1a; --ink-mid: #3a3a3a; --ink-faint: #9a9a9a;
-      --white: #ffffff; --ease: cubic-bezier(0.4,0,0.2,1); --ease-out: cubic-bezier(0,0,0.2,1); --duration: 0.4s;
+      --bg: #ededeb;
+      --ink: #1a1a1a;
+      --ink-mid: #3a3a3a;
+      --ink-faint: #9a9a9a;
+      --white: #ffffff;
+      --ease: cubic-bezier(0.4, 0, 0.2, 1);
+      --ease-out: cubic-bezier(0, 0, 0.2, 1);
+      --duration: 0.4s;
     }
 
     html { scroll-behavior: smooth; }
 
-    body { background-color: var(--bg); color: var(--ink); font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 300; min-height: 100vh; overflow-x: hidden; position: relative; }
+    body {
+      background-color: var(--bg);
+      color: var(--ink);
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 300;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
 
+    .page-wrapper {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 clamp(1.5rem, 5vw, 4rem);
+    }
 
-    .page-wrapper { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; padding: 0 clamp(1.5rem, 5vw, 4rem); }
-
-    .section-form { padding: clamp(3rem,8vw,6rem) 0 clamp(4rem,8vw,7rem); opacity: 0; transform: translateY(40px); transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out); }
+    .section-form {
+      padding: clamp(3rem, 8vw, 6rem) 0 clamp(4rem, 8vw, 7rem);
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+    }
     .section-form.visible { opacity: 1; transform: translateY(0); }
 
-    .form-header { margin-bottom: clamp(2.5rem,6vw,4rem); }
+    .form-header { margin-bottom: clamp(2.5rem, 6vw, 4rem); }
 
-    .form-title { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 800; font-size: clamp(3rem,9vw,6.5rem); line-height: 1; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 0.6rem; }
+    .form-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 800;
+      font-size: clamp(3rem, 9vw, 6.5rem);
+      line-height: 1;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 0.6rem;
+    }
 
-    .form-subtitle { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: clamp(1.1rem,3vw,1.45rem); color: var(--ink-mid); letter-spacing: 0.03em; }
+    .form-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(1.1rem, 3vw, 1.45rem);
+      color: var(--ink-mid);
+      letter-spacing: 0.03em;
+    }
 
-    .contact-form { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem,4vw,3rem) clamp(1.5rem,4vw,3rem); }
+    .contact-form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2rem, 4vw, 3rem) clamp(1.5rem, 4vw, 3rem);
+    }
 
     .field-full { grid-column: 1 / -1; }
 
@@ -38,58 +82,195 @@
 
     .field input,
     .field textarea {
-      width: 100%; background: transparent; border: none; border-bottom: 1px solid #c8bfb5; outline: none;
-      font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(1rem,2.5vw,1.2rem);
-      color: var(--ink); padding: 0.5rem 0 0.6rem; line-height: 1.6;
-      transition: border-color var(--duration) var(--ease); -webkit-appearance: none; border-radius: 0;
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid #c8bfb5;
+      outline: none;
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      color: var(--ink);
+      padding: 0.5rem 0 0.6rem;
+      line-height: 1.6;
+      transition: border-color var(--duration) var(--ease);
+      -webkit-appearance: none;
+      border-radius: 0;
     }
 
-    .field textarea { resize: none; overflow-y: auto; min-height: 100px; display: block; }
+    .field textarea {
+      resize: none;
+      overflow-y: auto;
+      min-height: 100px;
+      display: block;
+    }
 
-    .field::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0%; height: 1.5px; background: var(--ink); transition: width 0.45s var(--ease); }
+    .field::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0%;
+      height: 1.5px;
+      background: var(--ink);
+      transition: width 0.45s var(--ease);
+    }
 
     .field-textarea::after { bottom: 1.6rem; }
-
     .field:focus-within::after { width: 100%; }
 
-    .field label { position: absolute; top: 2rem; left: 0; font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(0.95rem,2.5vw,1.1rem); color: var(--ink-faint); pointer-events: none; transition: top 0.35s var(--ease), font-size 0.35s var(--ease), color 0.35s var(--ease), letter-spacing 0.35s var(--ease); letter-spacing: 0.01em; }
+    .field label {
+      position: absolute;
+      top: 2rem;
+      left: 0;
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+      color: var(--ink-faint);
+      pointer-events: none;
+      transition: top 0.35s var(--ease), font-size 0.35s var(--ease),
+                  color 0.35s var(--ease), letter-spacing 0.35s var(--ease);
+      letter-spacing: 0.01em;
+    }
 
     .field input:focus ~ label,
     .field input:not(:placeholder-shown) ~ label,
     .field textarea:focus ~ label,
     .field textarea:not(:placeholder-shown) ~ label {
-      top: 0; font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-mid);
+      top: 0;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--ink-mid);
     }
 
     .field input::placeholder,
     .field textarea::placeholder { color: transparent; }
 
-    .char-counter { display: block; text-align: right; font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 0.68rem; letter-spacing: 0.08em; color: var(--ink-faint); margin-top: 0.3rem; }
+    .char-counter {
+      display: block;
+      text-align: right;
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      color: var(--ink-faint);
+      margin-top: 0.3rem;
+    }
 
-    .btn-submit { grid-column: 1 / -1; justify-self: start; margin-top: clamp(0.5rem,2vw,1rem); background: var(--ink); color: var(--white); border: 1.5px solid var(--ink); font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 0.85rem; letter-spacing: 0.25em; text-transform: uppercase; padding: 1rem 2.5rem; cursor: pointer; transition: background var(--duration) var(--ease), color var(--duration) var(--ease), transform var(--duration) var(--ease); -webkit-appearance: none; border-radius: 0; }
+    .btn-submit {
+      grid-column: 1 / -1;
+      justify-self: start;
+      margin-top: clamp(0.5rem, 2vw, 1rem);
+      background: var(--ink);
+      color: var(--white);
+      border: 1.5px solid var(--ink);
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: 0.85rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      padding: 1rem 2.5rem;
+      cursor: pointer;
+      transition: background var(--duration) var(--ease),
+                  color var(--duration) var(--ease),
+                  transform var(--duration) var(--ease);
+      -webkit-appearance: none;
+      border-radius: 0;
+    }
     .btn-submit:hover { background: transparent; color: var(--ink); transform: translateY(-2px); }
     .btn-submit:active { transform: translateY(0); }
 
-    .popup-overlay { display: none; position: fixed; inset: 0; z-index: 9999; background: rgba(26,26,26,0.45); backdrop-filter: blur(4px); align-items: center; justify-content: center; }
-    .popup-card { background: var(--bg); padding: clamp(2rem,6vw,3.5rem) clamp(2rem,6vw,4rem); max-width: 520px; width: 100%; text-align: center; position: relative; transform: scale(0.88) translateY(20px); transition: transform 0.45s var(--ease-out); }
+    .popup-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(26, 26, 26, 0.45);
+      backdrop-filter: blur(4px);
+      align-items: center;
+      justify-content: center;
+    }
+
+    .popup-card {
+      background: var(--bg);
+      padding: clamp(2rem, 6vw, 3.5rem) clamp(2rem, 6vw, 4rem);
+      max-width: 520px;
+      width: 100%;
+      text-align: center;
+      position: relative;
+      transform: scale(0.88) translateY(20px);
+      transition: transform 0.45s var(--ease-out);
+    }
     .popup-overlay-active .popup-card { transform: scale(1) translateY(0); }
-    .popup-icon { font-size: 2rem; margin-bottom: 1.2rem; color: var(--ink-mid); letter-spacing: 0.1em; font-family: 'Cormorant Garamond', serif; }
-    .popup-title { font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: clamp(1.3rem,4vw,1.7rem); color: var(--ink); margin-bottom: 0.9rem; }
-    .popup-text { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(1rem,2.5vw,1.2rem); font-style: italic; color: var(--ink-mid); line-height: 1.7; margin-bottom: 2rem; }
-    .btn-close { background: transparent; color: var(--ink); border: 1px solid var(--ink); font-family: 'Cormorant Garamond', serif; font-size: 0.82rem; letter-spacing: 0.22em; text-transform: uppercase; padding: 0.8rem 2rem; cursor: pointer; transition: background var(--duration) var(--ease), color var(--duration) var(--ease); -webkit-appearance: none; border-radius: 0; }
+
+    .popup-icon {
+      font-size: 2rem;
+      margin-bottom: 1.2rem;
+      color: var(--ink-mid);
+      letter-spacing: 0.1em;
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+    .popup-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      font-size: clamp(1.3rem, 4vw, 1.7rem);
+      color: var(--ink);
+      margin-bottom: 0.9rem;
+    }
+
+    .popup-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      font-style: italic;
+      color: var(--ink-mid);
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+
+    .btn-close {
+      background: transparent;
+      color: var(--ink);
+      border: 1px solid var(--ink);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      padding: 0.8rem 2rem;
+      cursor: pointer;
+      transition: background var(--duration) var(--ease),
+                  color var(--duration) var(--ease);
+      -webkit-appearance: none;
+      border-radius: 0;
+    }
     .btn-close:hover { background: var(--ink); color: var(--white); }
 
     .field input.clearing,
-    .field textarea.clearing { opacity: 0; transition: opacity 0.5s var(--ease); }
+    .field textarea.clearing {
+      opacity: 0;
+      transition: opacity 0.5s var(--ease);
+    }
 
+    /* ── FIX TABLET ── */
+    @media (max-width: 768px) {
+      .form-title { font-size: clamp(2.5rem, 7vw, 4rem); }
+    }
+
+    /* ── FIX MOBILE ── */
     @media (max-width: 560px) {
       .contact-form { grid-template-columns: 1fr; }
       .field-full { grid-column: 1; }
       .btn-submit { grid-column: 1; width: 100%; text-align: center; }
+      .popup-card { margin: 0 1rem; width: calc(100% - 2rem); }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+      *, *::before, *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+      }
       .section-form { opacity: 1; transform: none; }
     }
   </style>
@@ -106,28 +287,34 @@
       <form class="contact-form" id="contactForm" novalidate>
 
         <div class="field">
-          <input type="text" id="nome" name="nome" placeholder=" " autocomplete="given-name" required />
+          <input type="text" id="nome" name="nome" placeholder=" "
+                 autocomplete="given-name" required />
           <label for="nome">Nome</label>
         </div>
 
         <div class="field">
-          <input type="text" id="cognome" name="cognome" placeholder=" " autocomplete="family-name" required />
+          <input type="text" id="cognome" name="cognome" placeholder=" "
+                 autocomplete="family-name" required />
           <label for="cognome">Cognome</label>
         </div>
 
         <div class="field field-full">
-          <input type="tel" id="telefono" name="telefono" placeholder=" " autocomplete="tel" pattern="[\+]?[0-9\s\-]{6,20}" title="Inserisci un numero di telefono valido (solo cifre, spazi, trattini o +)" />
+          <input type="tel" id="telefono" name="telefono" placeholder=" "
+                 autocomplete="tel"
+                 pattern="[\+]?[0-9\s\-]{6,20}"
+                 title="Inserisci un numero di telefono valido" />
           <label for="telefono">Numero di cellulare</label>
         </div>
 
         <div class="field field-full">
-          <input type="email" id="email" name="email" placeholder=" " autocomplete="email" required />
+          <input type="email" id="email" name="email" placeholder=" "
+                 autocomplete="email" required />
           <label for="email">Email</label>
         </div>
 
-        <!-- CAMPO NOTE -->
         <div class="field field-full field-textarea">
-          <textarea id="note" name="note" placeholder=" " maxlength="5000" rows="4" aria-label="Note"></textarea>
+          <textarea id="note" name="note" placeholder=" "
+                    maxlength="5000" rows="4" aria-label="Note"></textarea>
           <label for="note">Note</label>
           <span class="char-counter"><span id="noteCount">0</span> / 5000</span>
         </div>
@@ -139,7 +326,8 @@
   </div>
 
   <!-- Popup conferma -->
-  <div class="popup-overlay" id="popupOverlay" role="dialog" aria-modal="true" aria-labelledby="popupTitolo">
+  <div class="popup-overlay" id="popupOverlay"
+       role="dialog" aria-modal="true" aria-labelledby="popupTitolo">
     <div class="popup-card">
       <p class="popup-icon">✦</p>
       <h2 class="popup-title" id="popupTitolo">Messaggio inviato</h2>
@@ -149,53 +337,81 @@
   </div>
 
   <script>
-    (function() {
+    (function () {
       var targets = document.querySelectorAll('.section-form');
-      if (!('IntersectionObserver' in window)) { targets.forEach(function(el){ el.classList.add('visible'); }); return; }
-      var obs = new IntersectionObserver(function(entries){
-        entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); } });
+      if (!('IntersectionObserver' in window)) {
+        targets.forEach(function (el) { el.classList.add('visible'); });
+        return;
+      }
+      var obs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+        });
       }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-      targets.forEach(function(el){ obs.observe(el); });
+      targets.forEach(function (el) { obs.observe(el); });
     })();
 
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       var formEl       = document.getElementById('contactForm');
       var popupOverlay = document.getElementById('popupOverlay');
       var popupChiudi  = document.getElementById('popupChiudi');
       var noteTA       = document.getElementById('note');
       var noteCount    = document.getElementById('noteCount');
 
-      noteTA.addEventListener('input', function(){ noteCount.textContent = noteTA.value.length; });
+      noteTA.addEventListener('input', function () {
+        noteCount.textContent = noteTA.value.length;
+      });
 
-      formEl.addEventListener('submit', function(e){ e.preventDefault(); if(!formEl.checkValidity()){ formEl.reportValidity(); return; } openPopup(); });
-      popupChiudi.addEventListener('click', function(){ closePopup(); });
-      popupOverlay.addEventListener('click', function(e){ if(e.target===popupOverlay) closePopup(); });
-      document.addEventListener('keydown', function(e){ if(e.key==='Escape' && popupOverlay.style.display!=='none') closePopup(); });
+      formEl.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (!formEl.checkValidity()) { formEl.reportValidity(); return; }
+        openPopup();
+      });
 
-      function openPopup(){
-        popupOverlay.style.display='flex';
+      popupChiudi.addEventListener('click', function () { closePopup(); });
+      popupOverlay.addEventListener('click', function (e) {
+        if (e.target === popupOverlay) closePopup();
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && popupOverlay.style.display !== 'none') closePopup();
+      });
+
+      function openPopup() {
+        popupOverlay.style.display = 'flex';
         popupOverlay.classList.add('popup-overlay-active');
-        setTimeout(function(){ popupChiudi.focus(); }, 100);
+        setTimeout(function () { popupChiudi.focus(); }, 100);
         popupOverlay.addEventListener('keydown', trapFocus);
       }
-      function closePopup(){
+
+      function closePopup() {
         popupOverlay.classList.remove('popup-overlay-active');
         popupOverlay.removeEventListener('keydown', trapFocus);
-        setTimeout(function(){
-          popupOverlay.style.display='none';
+        setTimeout(function () {
+          popupOverlay.style.display = 'none';
           var fields = formEl.querySelectorAll('input, textarea');
-          fields.forEach(function(f){ f.classList.add('clearing'); });
-          setTimeout(function(){ formEl.reset(); noteCount.textContent='0'; fields.forEach(function(f){ f.classList.remove('clearing'); }); }, 500);
+          fields.forEach(function (f) { f.classList.add('clearing'); });
+          setTimeout(function () {
+            formEl.reset();
+            noteCount.textContent = '0';
+            fields.forEach(function (f) { f.classList.remove('clearing'); });
+          }, 500);
         }, 400);
       }
-      function trapFocus(e){
-        if(e.key!=='Tab') return;
-        var focusable = popupOverlay.querySelectorAll('button,[href],input,select,textarea,[tabindex]:not([tabindex="-1"])');
-        var first=focusable[0], last=focusable[focusable.length-1];
-        if(e.shiftKey){ if(document.activeElement===first){ e.preventDefault(); last.focus(); } }
-        else { if(document.activeElement===last){ e.preventDefault(); first.focus(); } }
+
+      function trapFocus(e) {
+        if (e.key !== 'Tab') return;
+        var focusable = popupOverlay.querySelectorAll(
+          'button,[href],input,select,textarea,[tabindex]:not([tabindex="-1"])'
+        );
+        var first = focusable[0], last = focusable[focusable.length - 1];
+        if (e.shiftKey) {
+          if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+        } else {
+          if (document.activeElement === last) { e.preventDefault(); first.focus(); }
+        }
       }
     });
   </script>
+
 </body>
 </html>
