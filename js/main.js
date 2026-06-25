@@ -32,41 +32,83 @@ document.addEventListener('DOMContentLoaded', () => {
   function apriMenu()  { menuTendina.classList.add('aperto');    navToggle.setAttribute('aria-expanded', 'true');  }
   function chiudiMenu(){ menuTendina.classList.remove('aperto'); navToggle.setAttribute('aria-expanded', 'false'); }
 
-  // ──────────────────────────────────────────
-  // 2. SEZIONE PT
-  // Solo pulsanti + / − e slider manuale.
-  // Scroll e tastiera NON modificano il valore.
-  // ──────────────────────────────────────────
-  const ptTesto  = document.getElementById('ptTesto');
-  const ptNumero = document.getElementById('ptNumero');
-  const ptSlider = document.getElementById('ptSlider');
-  const ptPlus   = document.getElementById('ptPlus');
-  const ptMinus  = document.getElementById('ptMinus');
 
-  if (!ptTesto || !ptNumero || !ptSlider || !ptPlus || !ptMinus) return;
+// ──────────────────────────────────────────
+// 2. SEZIONE PT
+// ──────────────────────────────────────────
+const ptTesto     = document.getElementById('ptTesto');
+const ptNumero    = document.getElementById('ptNumero');
+const ptSlider    = document.getElementById('ptSlider');
+const ptPlus      = document.getElementById('ptPlus');
+const ptMinus     = document.getElementById('ptMinus');
+const ptAreaTesto = document.querySelector('.pt-area-testo');
 
-  // 1 pt tipografico = 96/72 px (standard 96 dpi)
-  const PT_TO_PX = 96 / 72;
-  const PT_MIN   = 6;
-  const PT_MAX   = 400;
-  let ptCorrente = 72;
+if (!ptTesto || !ptNumero || !ptSlider || !ptPlus || !ptMinus) return;
 
-  function aggiornaPt(nuovoPt) {
-    ptCorrente = Math.max(PT_MIN, Math.min(PT_MAX, Math.round(nuovoPt)));
-    ptTesto.style.fontSize = (ptCorrente * PT_TO_PX) + 'px';
-    ptNumero.textContent   = ptCorrente;
-    ptSlider.value         = ptCorrente;
-  }
+const PT_TO_PX    = 96 / 72;
+const PT_MIN      = 6;
+const PT_MAX      = 400;
+const PT_DEFAULT  = 72;
+let ptCorrente            = PT_DEFAULT;
+let utenteHaInteragitoPt  = false; // evita che il resize scavalchi una scelta manuale
 
-  // Inizializzazione
-  aggiornaPt(ptCorrente);
+function aggiornaPt(nuovoPt) {
+  ptCorrente = Math.max(PT_MIN, Math.min(PT_MAX, Math.round(nuovoPt)));
+  ptTesto.style.fontSize = (ptCorrente * PT_TO_PX) + 'px';
+  ptNumero.textContent   = ptCorrente;
+  ptSlider.value         = ptCorrente;
+}
 
-  // Pulsanti + e −
-  ptPlus .addEventListener('click', () => aggiornaPt(ptCorrente + 1));
-  ptMinus.addEventListener('click', () => aggiornaPt(ptCorrente - 1));
+// Calcola il pt massimo che fa stare il testo su una riga nello spazio
+// realmente disponibile, senza mai superare il valore di default (72pt).
+function calcolaPtAdattivo() {
+  if (!ptAreaTesto) return PT_DEFAULT;
 
-  // Slider (drag manuale con il pallino)
-  ptSlider.addEventListener('input', () => aggiornaPt(Number(ptSlider.value)));
+  const cs         = window.getComputedStyle(ptTesto);
+  const fontFamily = cs.fontFamily;
+  const fontWeight = cs.fontWeight;
+
+  const canvas = document.createElement('canvas');
+  const ctx    = canvas.getContext('2d');
+  const refPx  = 200; // dimensione di riferimento per la misura
+  ctx.font     = `${fontWeight} ${refPx}px ${fontFamily}`;
+  const larghezzaRiferimento = ctx.measureText(ptTesto.textContent).width;
+  if (!larghezzaRiferimento) return PT_DEFAULT;
+
+  const csArea   = window.getComputedStyle(ptAreaTesto);
+  const padLeft  = parseFloat(csArea.paddingLeft)  || 0;
+  const padRight = parseFloat(csArea.paddingRight) || 0;
+  const larghezzaDisponibile = (ptAreaTesto.clientWidth - padLeft - padRight) * 0.92; // margine di sicurezza
+
+  const pxMassimo = (larghezzaDisponibile / larghezzaRiferimento) * refPx;
+  const ptMassimo = pxMassimo / PT_TO_PX;
+
+  return Math.max(PT_MIN, Math.min(PT_DEFAULT, Math.floor(ptMassimo)));
+}
+
+function impostaDimensioneIniziale() {
+  if (utenteHaInteragitoPt) return; // non toccare se l'utente ha già scelto un valore
+  aggiornaPt(calcolaPtAdattivo());
+}
+
+// Inizializzazione
+impostaDimensioneIniziale();
+
+// Pulsanti + e −
+ptPlus .addEventListener('click', () => { utenteHaInteragitoPt = true; aggiornaPt(ptCorrente + 1); });
+ptMinus.addEventListener('click', () => { utenteHaInteragitoPt = true; aggiornaPt(ptCorrente - 1); });
+
+// Slider (drag manuale con il pallino)
+ptSlider.addEventListener('input', () => { utenteHaInteragitoPt = true; aggiornaPt(Number(ptSlider.value)); });
+
+// Ricalcola la dimensione iniziale se la finestra cambia (es. rotazione schermo),
+// ma solo se l'utente non ha ancora interagito manualmente
+window.addEventListener('resize', impostaDimensioneIniziale);
+
+// Ricalcola anche dopo il caricamento effettivo del font, per misure accurate
+if (document.fonts && document.fonts.ready) {
+  document.fonts.ready.then(impostaDimensioneIniziale);
+}
 
 
 

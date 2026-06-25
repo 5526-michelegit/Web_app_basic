@@ -178,7 +178,10 @@ body { width: 100%; min-height: 100%; overflow-x: hidden; font-family: var(--fon
  cursor: text;
  position: relative;
  z-index: 1;
- white-space: nowrap; overflow: hidden;
+ white-space: pre-wrap;
+ overflow-wrap: break-word;
+ word-break: break-word;
+ overflow: visible;
 }
 
 .aphrodite-testo:empty::before { content: attr(data-placeholder);
@@ -452,6 +455,7 @@ input[type="range"]#ptSlider::-moz-range-track {
 /* --- Breakpoint 480px: ottimizzazioni per schermi piccoli --- */
 @media (max-width: 480px) { .nav-principale { top: 1rem; left: 1rem; } .menu-tendina   { min-width: 140px; }
  .font-nome-link { font-size: 2.8rem; }
+ .hero-titolo { font-size: clamp(2.2rem, 13vw, 4.8rem); }
  /* FIX 2: aphrodite-testo su mobile con testo a capo corretto */
  .aphrodite-testo {
   font-size: clamp(3rem, 12vw, 6rem);
@@ -462,7 +466,7 @@ input[type="range"]#ptSlider::-moz-range-track {
  .pt-numero { font-size: 4rem; }
  /* FIX 4: padding corretto per area testo PT su mobile */
  .pt-area-testo { padding: 2rem 1.5rem; }
- /* FIX 4: font-size esplicito per il testo PT su mobile */ .pt-testo-principale { font-size: clamp(1.5rem, 10vw, 4rem) !important; }
+ /* FIX 4: font-size esplicito per il testo PT su mobile */
 
  .aphrodite-zona-linee { padding: 3rem 1.5rem 0; }}
 /* FIX 7: hero-scroll-hint ridotto in schermi bassi (landscape mobile) */
