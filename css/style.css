@@ -178,10 +178,7 @@ body { width: 100%; min-height: 100%; overflow-x: hidden; font-family: var(--fon
  cursor: text;
  position: relative;
  z-index: 1;
- white-space: pre-wrap;
- overflow-wrap: break-word;
- word-break: break-word;
- overflow: visible;
+ white-space: nowrap; overflow: hidden;
 }
 
 .aphrodite-testo:empty::before { content: attr(data-placeholder);
